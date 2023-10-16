@@ -19,6 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SmsDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("MyDbContext")));
+builder.Services.AddDatabaseModule<SmsDbContext>(builder.Configuration);
 builder.Services.AddIdentity<AppUser, IdentityRole>().AddEntityFrameworkStores<SmsDbContext>().AddRoles<IdentityRole>().AddDefaultTokenProviders();
 builder.Services.AddScoped<UserManager<AppUser>>();
 builder.Services.AddScoped<SignInManager<AppUser>>();
@@ -88,7 +89,6 @@ app.UseHttpsRedirection();
 app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();

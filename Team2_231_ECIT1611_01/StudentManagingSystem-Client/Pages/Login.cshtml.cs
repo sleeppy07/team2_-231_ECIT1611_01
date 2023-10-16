@@ -31,18 +31,19 @@ namespace StudentManagingSystem_Client.Pages
 
             var client = new ClientService(HttpContext);
             var requestModel = new LoginRequestModel { Email = Email, Password = Password };
-            var result = await client.PostReturnResponse("api/UserJwt/login", requestModel);
-            
-            if (result.Content.ReadAsStringAsync().Result.Equals("Not activated"))
-            {
-                ViewData["Title"] = "Account is locked";
-                return Page();
-            }
+            var result = await client.PostReturnResponse("/api/UserJwt/login", requestModel);
+
             if (!result.IsSuccessStatusCode)
             {
                 ViewData["Title"] = "Wrong Email or Password!";
                 return Page();
             }
+            if (result.Content.ReadAsStringAsync().Result.Equals("Not activated"))
+            {
+                ViewData["Title"] = "Account is locked";
+                return Page();
+            }
+
             var content = await result.EnsureSuccessStatusCode().Content.ReadAsStringAsync();
             var res = JsonConvert.DeserializeObject<LoginResponseModel>(content);
             HttpContext.Response.Cookies.Append("AccessToken", res.Token, new CookieOptions
