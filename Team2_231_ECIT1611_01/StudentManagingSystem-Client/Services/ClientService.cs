@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 
@@ -13,8 +14,11 @@ namespace StudentManagingSystem_Client.Services
         public ClientService(HttpContext httpContext, HttpClient? client = null)
         {
             _httpContext = httpContext;
+            var appSettingsJson = File.ReadAllText("appsettings.json");
+            var appSettings = JObject.Parse(appSettingsJson);
+            var baseAddress = appSettings["BaseAddress"].Value<string>();
             _client = client ?? new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:7016");
+            _client.BaseAddress = new Uri(baseAddress);
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _httpContext.Request.Cookies["AccessToken"]);
         }
