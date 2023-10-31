@@ -2544,8 +2544,15 @@ body.IE .register-page-wrap .container {
     border-radius: 8px
 }
 
-.row-page {
-    justify-content: right
+.row-page{
+    justify-content: right;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
 }
 
 .fontawesome-icon-list .fa-hover:hover {
