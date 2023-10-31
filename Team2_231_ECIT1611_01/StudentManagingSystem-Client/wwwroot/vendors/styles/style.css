@@ -2544,6 +2544,10 @@ body.IE .register-page-wrap .container {
     border-radius: 8px
 }
 
+.row-page {
+    justify-content: right
+}
+
 .fontawesome-icon-list .fa-hover:hover {
     background: rgba(68, 66, 87, .13);
     -webkit-box-shadow: 0 0 18px rgba(0, 0, 0, .08);
@@ -4740,7 +4744,7 @@ body.IE .register-page-wrap .container {
     margin-top: 6px
 }
 
-@media (min-width:1301px) and (max-width:1400px) {
+@media (min-width:1200px) and (max-width:1400px) {
     .header {
         width: calc(100% - 250px)
     }
@@ -4761,7 +4765,7 @@ body.IE .register-page-wrap .container {
     }
 }
 
-@media (min-width:1301px) {
+@media (min-width:1200px) {
 
     .sidebar-shrink .left-side-bar,
     .sidebar-shrink .left-side-bar.open {
@@ -4777,7 +4781,7 @@ body.IE .register-page-wrap .container {
     }
 }
 
-@media (max-width:1300px) {
+@media (max-width:1200px) {
     .main-container {
         padding-left: 5px;
         padding-right: 5px
@@ -4797,31 +4801,31 @@ body.IE .register-page-wrap .container {
         left: -281px
     }
 
-    .left-side-bar .close-sidebar {
-        display: block
-    }
+        .left-side-bar .close-sidebar {
+            display: block
+        }
 
-    .left-side-bar:before {
-        display: block;
-        opacity: 0;
-        visibility: hidden
-    }
+        .left-side-bar:before {
+            display: block;
+            opacity: 0;
+            visibility: hidden
+        }
 
-    .left-side-bar.open:before {
-        opacity: 1;
-        visibility: visible;
-        display: none
-    }
+        .left-side-bar.open:before {
+            opacity: 1;
+            visibility: visible;
+            display: none
+        }
 
-    .left-side-bar .brand-logo a {
-        text-align: left;
-        padding: 5px 15px
-    }
+        .left-side-bar .brand-logo a {
+            text-align: left;
+            padding: 5px 15px
+        }
 
-    .left-side-bar .brand-logo a .svg,
-    .left-side-bar .brand-logo a img {
-        margin: 0
-    }
+            .left-side-bar .brand-logo a .svg,
+            .left-side-bar .brand-logo a img {
+                margin: 0
+            }
 
     .header-right .brand-logo {
         display: table
@@ -4843,10 +4847,10 @@ body.IE .register-page-wrap .container {
         visibility: hidden
     }
 
-    .mobile-menu-overlay.show {
-        opacity: .6;
-        visibility: visible
-    }
+        .mobile-menu-overlay.show {
+            opacity: .6;
+            visibility: visible
+        }
 }
 
 @media (min-width:1025px) {

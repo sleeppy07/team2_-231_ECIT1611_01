@@ -23,7 +23,7 @@ namespace DataAccess.Repository
 
         public async Task<List<AppUser>> GetAll()
         {
-            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
+            var list = await _context.AppUsers.Where(i => i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
             return list;
         }
         public async Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default)

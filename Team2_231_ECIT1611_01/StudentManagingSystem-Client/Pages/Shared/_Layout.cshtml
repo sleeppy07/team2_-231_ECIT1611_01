@@ -42,7 +42,6 @@
 <body>
     <div class="header">
         <div class="header-left">
-            <div class="menu-icon dw dw-menu"></div>
             <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
             <div class="header-search">
 
@@ -91,8 +90,8 @@
                             <span class="user-name">@User.Identity.Name</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                            <a class="dropdown-item" href="/UserProfile?id=@User.FindFirst(ClaimTypes.Sid)?.Value"><i class="dw dw-user1"></i> Profile</a>
-                            <a class="dropdown-item" href="/Logout"><i class="dw dw-logout"></i> Log Out</a>
+                            <a class="dropdown-item" href="/UserProfile?id=@User.FindFirst(ClaimTypes.Sid)?.Value"><i class="dw dw-user1"></i> Thông tin cá nhân</a>
+                            <a class="dropdown-item" href="/Logout"><i class="dw dw-logout"></i> Đăng xuất</a>
                         </div>
                     </div>
                 </div>
@@ -129,19 +128,22 @@
                 <ul id="accordion-menu">
                     <li>
                         <a href="/Index" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/DepartmentPage/Department" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-list3"></span><span class="mtext">Department</span>
+                            <span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
                         </a>
                     </li>
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>
+                            <a href="/DepartmentPage/Department" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-list3"></span><span class="mtext">Quản lý khoa</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole(RoleConstant.ADMIN) || User.IsInRole(RoleConstant.TEACHER))
+                    {
+                        <li>
                             <a href="/StudentPage/Student" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-12"></span><span class="mtext">Student</span>
+                                <span class="micon dw dw-user-12"></span><span class="mtext">Quản lý sinh viên</span>
                             </a>
                         </li>
                     }
@@ -149,31 +151,31 @@
                     {
                         <li>
                             <a href="/TeacherPage/Teacher" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-13"></span><span class="mtext">Teacher</span>
+                                <span class="micon dw dw-user-13"></span><span class="mtext">Quản lý giảng viên</span>
                             </a>
                         </li>
                     }
 
                     <li>
                         <a href="/ClassRoomPage/ClassRoom" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-open-book-2"></span><span class="mtext">Class</span>
+                            <span class="micon dw dw-open-book-2"></span><span class="mtext">Quản lý lớp học</span>
                         </a>
                     </li>
                     <li>
                         <a href="/SubjectPage/Subject" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-book2"></span><span class="mtext">Subject</span>
+                            <span class="micon dw dw-book2"></span><span class="mtext">Quản lý môn</span>
                         </a>
                     </li>
                     <li>
                         <a href="/PointPage/Point" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-marker"></span><span class="mtext">Mark Report</span>
+                            <span class="micon dw dw-marker"></span><span class="mtext">Quản lý điểm</span>
                         </a>
                     </li>
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>
                             <a href="/NotificationPage/Notification" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-invoice"></span><span class="mtext">Notification</span>
+                                <span class="micon dw dw-invoice"></span><span class="mtext">Thông báo</span>
                             </a>
                         </li>
                     }
