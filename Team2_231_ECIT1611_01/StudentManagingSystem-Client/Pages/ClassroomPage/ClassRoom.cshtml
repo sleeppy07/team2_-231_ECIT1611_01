@@ -17,7 +17,8 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Lớp học</li>
+                                <li class="breadcrumb-item active" aria-current="page">Quản lý lớp học</li>
+
                             </ol>
                         </nav>
                     </div>
@@ -28,6 +29,7 @@
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddClass">
                                         Thêm lớp học
+
                                     </a>
                                 </div>
                             </div>
@@ -38,6 +40,7 @@
                                     </a>
                                 </div>
                             </div>               
+
                         }
                     </div>
                 </div>
@@ -51,14 +54,18 @@
                                     <i style="justify-content: flex-start;"
                                        class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                     <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
+
                                            class="form-control search-input" placeholder="Nội dung tìm kiếm">
+
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div style="display: flex;">
+
                             <p style="justify-content: flex-start; margin-top:9px white-space: nowrap" class="mr-10">Trạng thái</p>
+
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="Status" class="custom-select">
                                     <option selected="" value="null">Tất cả</option>
@@ -69,6 +76,7 @@
                         </div>
                     </div>
                     <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
+
                     <div class="row-page btn-file">
                         <div class="col-md-2 col-sm-12 text-left">
                             <div class="dropdown">
@@ -89,6 +97,7 @@
                             </div>
                         </div>
                     </div>
+
                     @*<div class="col-md-3">
                     <div style="display: flex;">
                     <p style="justify-content: flex-start;margin-top:9px" class="mr-10">Status</p>
@@ -110,13 +119,13 @@
                     <thead style="background-color: lightgray">
                         <tr>
                             <th>#</th>
-                            <th>Tên lớp học</th>
-                            <th>Mã lớp học</th>
+                            <th>Tên Lớp</th>
+                            <th>Mã lớp</th>
                             <th>Khoa</th>
                             <th>Giảng viên</th>
                             <th>Trạng thái</th>
                             <th>Ngày tạo</th>
-                            <th>Ngày chỉnh sửa</th>
+                            <th>Ngày cập nhật</th>
                             <th>Hành động</th>
                             <th></th>
                         </tr>
@@ -143,25 +152,23 @@
                                         @if (User.IsInRole(RoleConstant.ADMIN))
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Edit</a>
-                                                <a class="dropdown-item" asp-page="DeleteClass" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Delete</a>
+                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Chi tiết</a>
+                                                <a class="dropdown-item" asp-page="DeleteClass" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Xóa</a>
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id"><i class="dw dw-edit2"></i>Xem</a>
-
+                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id"><i class="dw dw-edit2"></i>Chi tiết</a>
                                             </div>
                                         }
                                     </div>
                                 </td>
-                                <td>
+                                @*<td>
                                     <a class="btn btn-info view-students" data-toggle="modal" data-target="#liststudent" data-classid="@item.Id">
                                         <i class="bi bi-eye"></i>
                                     </a>
-                                </td>
-
+                                </td>*@
                             </tr>
                         }
 
@@ -192,7 +199,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myLargeModalLabel">
-                    Quan lí sinh viên
+                    Danh sách sinh viên
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     ×
@@ -202,8 +209,8 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th scope="col">Student Name</th>
-                            <th scope="col">Student Code</th>
+                            <th scope="col">Tên sinh viên</th>
+                            <th scope="col">Mã sinh viên</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -266,11 +273,10 @@
             }
         });
 
-        if (checkedCount >= 2) {
+        if (checkedCount > 0) {
             deleteButton.classList.remove('disabled');
-        } else {
-            deleteButton.classList.add('disabled');
         }
+        else deleteButton.classList.add('disabled');
     }
 
     checkboxes.forEach(function (checkbox) {
@@ -303,7 +309,7 @@
                 });*/
 
                 if (selectedIds.length > 0) {
-                    var url = "https://localhost:7016/api/ClassRoom/deleteList";
+                    var url = "https://api-team2-tmu.eztek.net/api/ClassRoom/deleteList";
                     var token = document.getElementById("token").value;
                     $.ajax({
                         url: url,
@@ -335,7 +341,7 @@
 
                 // Make the AJAX call to fetch the student list with classId as a query parameter
                 $.ajax({
-                    url: 'https://localhost:7016/api/Student/getStudentByClass?Id=' + classId,
+                    url: 'https://api-team2-tmu.eztek.net/api/Student/getStudentByClass?Id=' + classId,
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {

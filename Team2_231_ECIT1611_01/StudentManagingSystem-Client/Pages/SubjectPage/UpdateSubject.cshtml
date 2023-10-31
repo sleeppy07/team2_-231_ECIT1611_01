@@ -16,14 +16,14 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Subject">Subject List</a></li>
+                                <li class="breadcrumb-item"><a asp-page="Subject">Quản lý môn học</a></li>
                                 @if (User.IsInRole(RoleConstant.ADMIN))
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Edit Subject</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                                 else
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                             </ol>
                         </nav>
@@ -37,46 +37,46 @@
                     <form method="post">
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.Id" class="form-control" type="hidden" placeholder="Subject name">
+                                <input asp-for="Subject.Id" class="form-control" type="hidden" placeholder="Tên môn học">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.SubjectName" class="col-sm-12 col-md-2 col-form-label">Subject Name</label>
+                            <label asp-for="Subject.SubjectName" class="col-sm-12 col-md-2 col-form-label">Tên môn học</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.SubjectName" class="form-control" type="text" placeholder="Subject name">
+                                <input asp-for="Subject.SubjectName" class="form-control" type="text" placeholder="Tên môn học">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
+                            <label asp-for="Subject.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Mã môn học</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.SubjectCode" class="form-control" type="text" placeholder="Subject code">
+                                <input asp-for="Subject.SubjectCode" class="form-control" type="text" placeholder="Mã môn học">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.Description" class="col-sm-12 col-md-2 col-form-label">Description</label>
+                            <label asp-for="Subject.Description" class="col-sm-12 col-md-2 col-form-label">Mô tả</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.Description" class="form-control" type="text" placeholder="Description">
+                                <input asp-for="Subject.Description" class="form-control" type="text" placeholder="Mô tả">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.Semester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
+                            <label asp-for="Subject.Semester" class="col-sm-12 col-md-2 col-form-label">Học kỳ</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.Semester" class="form-control" type="number" placeholder="Semester">
+                                <input asp-for="Subject.Semester" class="form-control" type="number" placeholder="Học kỳ">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                            <label asp-for="Subject.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                             <div class="col-sm-12 col-md-10">
                                 <select asp-for="Subject.Status" class="custom-select col-12">
-                                    <option selected="">Choose...</option>
-                                    <option value="true">True</option>
-                                    <option value="false">False</option>
+                                    <option selected="">Chọn...</option>
+                                    <option value="true">Hoạt động</option>
+                                    <option value="false">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a asp-page="Subject" type="submit" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a asp-page="Subject" type="submit" class="btn btn-danger">Thoát</a>
                         </div>
                     </form>
                 </div>
@@ -88,46 +88,46 @@
                     <form method="post">
                         <div class="form-group row">
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.Id" class="form-control" type="hidden" placeholder="Subject name">
+                                <input asp-for="Subject.Id" class="form-control" type="hidden" placeholder="Tên môn học">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.SubjectName" class="col-sm-12 col-md-2 col-form-label">Subject Name</label>
+                            <label asp-for="Subject.SubjectName" class="col-sm-12 col-md-2 col-form-label">Tên môn học</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.SubjectName" class="form-control" type="text" placeholder="Subject name" readonly="readonly">
+                                <input asp-for="Subject.SubjectName" class="form-control" type="text" placeholder="Tên môn học" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
+                            <label asp-for="Subject.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Mã môn học</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.SubjectCode" class="form-control" type="text" placeholder="Subject code" readonly="readonly">
+                                <input asp-for="Subject.SubjectCode" class="form-control" type="text" placeholder="Mã môn học" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.Description" class="col-sm-12 col-md-2 col-form-label">Description</label>
+                            <label asp-for="Subject.Description" class="col-sm-12 col-md-2 col-form-label">Mô tả</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.Description" class="form-control" type="text" placeholder="Description" readonly="readonly">
+                                <input asp-for="Subject.Description" class="form-control" type="text" placeholder="Mô tả" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.Semester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
+                            <label asp-for="Subject.Semester" class="col-sm-12 col-md-2 col-form-label">Học kỳ</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Subject.Semester" class="form-control" type="number" placeholder="Semester" readonly="readonly">
+                                <input asp-for="Subject.Semester" class="form-control" type="number" placeholder="Học kỳ" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Subject.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                            <label asp-for="Subject.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                             <div class="col-sm-12 col-md-10">
                                 <select asp-for="Subject.Status" class="custom-select col-12" disabled="disabled">
-                                    <option selected="">Choose...</option>
-                                    <option value="true">True</option>
-                                    <option value="false">False</option>
+                                    <option selected="">Chọn...</option>
+                                    <option value="true">Hoạt động</option>
+                                    <option value="false">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a asp-page="Subject" type="submit" class="btn btn-primary">Back</a>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a asp-page="Subject" type="submit" class="btn btn-primary">Quay lại</a>
                         </div>
                     </form>
                 </div>

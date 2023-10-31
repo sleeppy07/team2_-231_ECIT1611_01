@@ -21,14 +21,15 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Môn học</li>
+
+                                <li class="breadcrumb-item active" aria-current="page">Quản lý môn học</li>
                             </ol>
                         </nav>
                     </div>
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <div class="col-md-6 col-sm-12 d-flex flex-row">
-                            <div class="col-md-4 col-sm-12 text-right">
+                            <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddSubject">
                                         Thêm môn học
@@ -37,12 +38,11 @@
                             </div>
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
-                                    <a id="deleteButton" class="btn btn-danger disabled">
+                                    <a id="deleteButton" class="btn btn-danger disabled">                                    
                                         Xóa
                                     </a>
                                 </div>
                             </div>
-                            
                         </div>
 
                     }
@@ -58,6 +58,7 @@
                                    class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                 <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
                                        class="form-control search-input" placeholder="Nội dung tìm kiếm">
+
                             </div>
                             <div class="form-group mb-0 col-md-4 col-sm-12" style="display:flex">
                                 <input asp-for="Semester" style="justify-content: flex-end;" type="number"
@@ -68,6 +69,7 @@
                     <div class="col-md-3">
                         <div class="flex">
                             <p style="justify-content: flex-start; margin-top:9px; white-space: nowrap;" class="mr-10">Trạng thái</p>
+
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="Status" class="custom-select">
                                     <option selected="" value="null">Tất cả</option>
@@ -102,6 +104,7 @@
                         </div>
                         *@
                     </div>
+
                 </div>
             </form>
             <div class="table-responsive">
@@ -171,6 +174,7 @@
             }
             <div class="row-number">
                 <div class="btn-group mb-15">
+
                     <a class="btn btn-light @prev" asp-page="./Subject" asp-route-pageIndex="@(Model.PageIndex-1)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
                     {
@@ -186,13 +190,13 @@
     function confirmDelete(event) {
         event.preventDefault(); // prevent the default action of the button click
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Bạn chắc chắn muốn xóa chứ?',
+            //text: "You won't be able to revert this!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Chắc chắn'
         }).then((result) => {
             if (result.isConfirmed) {
                 // if the user clicks the confirm button, continue with the delete action
@@ -225,11 +229,11 @@
             }
         });
 
-        if (checkedCount >= 2) {
+        if (checkedCount > 0) {
             deleteButton.classList.remove('disabled');
-        } else {
-            deleteButton.classList.add('disabled');
         }
+        else deleteButton.classList.add('disabled');
+
     }
 
     checkboxes.forEach(function (checkbox) {
@@ -250,7 +254,7 @@
                 // Make the AJAX request
 
                 if (selectedIds.length > 0) {
-                    var url = "https://localhost:7016/api/Subject/deleteList";
+                    var url = "https://api-team2-tmu.eztek.net/api/Subject/deleteList";
                     var token = document.getElementById("token").value;
                     $.ajax({
                         url: url,

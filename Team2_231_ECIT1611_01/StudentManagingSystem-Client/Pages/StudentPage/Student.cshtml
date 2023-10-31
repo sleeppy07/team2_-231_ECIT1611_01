@@ -37,30 +37,30 @@
                             </div>
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
-                                    <a id="deleteButton" class="btn btn-danger disabled">
+                                    <a id="deleteButton" class="btn btn-danger disabled" style="color:white">
                                         Xóa
                                     </a>
                                 </div>
                             </div>
-                        </div>
-                            @*<div class="col-md-2 col-sm-12 text-left">
+                            <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-page="ExportStudent">
-                                        Export
+                                        Xuất file
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-sm-12 text-left">
+                            <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-success" onclick="chooseFile()">
-                                        Import
+                                        Nhập file
                                     </a>
                                     <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportStudent" style="display: none;">
                                         <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
                                         <button id="submitBtn" type="submit">Submit</button>
                                     </form>
                                 </div>
-                            </div>*@
+                            </div>
+                        </div>
                     }
                 </div>
             </div>
@@ -192,7 +192,7 @@
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, disable !'
+            confirmButtonText: 'Đồng ý'
         }).then((result) => {
             if (result.isConfirmed) {
                 // if the user clicks the confirm button, continue with the delete action
@@ -225,11 +225,10 @@
             }
         });
 
-        if (checkedCount >= 2) {
+        if (checkedCount > 0) {
             deleteButton.classList.remove('disabled');
-        } else {
-            deleteButton.classList.add('disabled');
         }
+        else deleteButton.classList.add('disabled');
     }
 
     checkboxes.forEach(function (checkbox) {
@@ -250,7 +249,7 @@
                 // Make the AJAX request
 
                 if (selectedIds.length > 0) {
-                    var url = "https://localhost:7016/api/Student/deleteList";
+                    var url = "https://api-team2-tmu.eztek.net/api/Student/deleteList";
                     var token = document.getElementById("token").value;
                     $.ajax({
                         url: url,

@@ -16,14 +16,14 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="ClassRoom">Class List</a></li>
+                                <li class="breadcrumb-item"><a href="ClassRoom">Quản lý lớp học</a></li>
                                 @if (User.IsInRole(RoleConstant.ADMIN))
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Edit Class</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                                 else
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                             </ol>
                         </nav>
@@ -41,19 +41,19 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="ClassRoom.ClassName" class="col-sm-12 col-md-2 col-form-label">ClassRoom Name</label>
+                            <label asp-for="ClassRoom.ClassName" class="col-sm-12 col-md-2 col-form-label">Tên lớp</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="ClassRoom.ClassName" class="form-control" type="text" placeholder="Name">
+                                <input asp-for="ClassRoom.ClassName" class="form-control" type="text" placeholder="Tên lớp">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="ClassRoom.ClassCode" class="col-sm-12 col-md-2 col-form-label">ClassRoom Code</label>
+                            <label asp-for="ClassRoom.ClassCode" class="col-sm-12 col-md-2 col-form-label">Mã lớp</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="ClassRoom.ClassCode" class="form-control" type="text" placeholder="Code">
+                                <input asp-for="ClassRoom.ClassCode" class="form-control" type="text" placeholder="Mã lớp">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Department</label>
+                            <label>Khoa</label>
                             <select asp-for="ClassRoom.DepartmentId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
                                 @foreach (var item in Model.listDept)
                                 {
@@ -62,7 +62,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Teacher</label>
+                            <label>Giảng viên</label>
                             <select asp-for="ClassRoom.UserId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
                                 @foreach (var item in Model.listUser)
                                 {
@@ -71,18 +71,18 @@
                             </select>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="ClassRoom.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                            <label asp-for="ClassRoom.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                             <div class="col-sm-12 col-md-10">
                                 <select asp-for="ClassRoom.Status" class="custom-select col-12">
-                                    <option selected="">Choose...</option>
+                                    <option selected="">Chịn...</option>
                                     <option value="true">Hoạt động</option>
                                     <option value="false">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a asp-page="ClassRoom" type="submit" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a asp-page="ClassRoom" type="submit" class="btn btn-danger">Thoát</a>
                         </div>
                     </form>
                 </div>
@@ -97,19 +97,19 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="ClassRoom.ClassName" class="col-sm-12 col-md-2 col-form-label">ClassRoom Name</label>
+                            <label asp-for="ClassRoom.ClassName" class="col-sm-12 col-md-2 col-form-label">Tên lớp</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="ClassRoom.ClassName" class="form-control" type="text" placeholder="Name" readonly="readonly">
+                                <input asp-for="ClassRoom.ClassName" class="form-control" type="text" placeholder="Tên lớp" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="ClassRoom.ClassCode" class="col-sm-12 col-md-2 col-form-label">ClassRoom Code</label>
+                            <label asp-for="ClassRoom.ClassCode" class="col-sm-12 col-md-2 col-form-label">Mã lớp</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="ClassRoom.ClassCode" class="form-control" type="text" placeholder="Code" readonly="readonly">
+                                <input asp-for="ClassRoom.ClassCode" class="form-control" type="text" placeholder="Mã lớp" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Department</label>
+                            <label>Khoa</label>
                             <select asp-for="ClassRoom.DepartmentId" class="custom-select2 form-control" style="width: 100%; height: 38px;" disabled="disabled">
                                 @foreach (var item in Model.listDept)
                                 {
@@ -118,7 +118,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Teacher</label>
+                            <label>Giảng viên</label>
                             <select asp-for="ClassRoom.UserId" class="custom-select2 form-control" style="width: 100%; height: 38px;" disabled="disabled">
                                 @foreach (var item in Model.listUser)
                                 {
@@ -127,17 +127,17 @@
                             </select>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="ClassRoom.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                            <label asp-for="ClassRoom.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                             <div class="col-sm-12 col-md-10">
                                 <select asp-for="ClassRoom.Status" class="custom-select col-12" disabled="disabled">
-                                    <option selected="">Choose...</option>
+                                    <option selected="">Chọn...</option>
                                     <option value="true">Hoạt động</option>
                                     <option value="false">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                         <div class="btn-list">
-                            <a asp-page="ClassRoom" type="submit" class="btn btn-primary">Back</a>
+                            <a asp-page="ClassRoom" type="submit" class="btn btn-primary">Quay lại</a>
                         </div>
                     </form>
                 </div>
