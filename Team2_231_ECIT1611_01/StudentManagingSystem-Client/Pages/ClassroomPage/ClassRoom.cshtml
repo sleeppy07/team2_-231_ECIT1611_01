@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Class List</h4>
+                            <h4>Quản lý lớp học</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Class</li>
+                                <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Lớp học</li>
                             </ol>
                         </nav>
                     </div>
@@ -27,35 +27,17 @@
                             <div class="col-md-4 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddClass">
-                                        Add Class
+                                        Thêm lớp học
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a id="deleteButton" class="btn btn-danger disabled">
-                                        Delete
+                                        Xóa
                                     </a>
                                 </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12 text-left">
-                                <div class="dropdown">
-                                    <a class="btn btn-outline-danger" asp-page="ExportClassRoom">
-                                        Export
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12 text-left">
-                                <div class="dropdown">
-                                    <a class="btn btn-outline-success" onclick="chooseFile()">
-                                        Import
-                                    </a>
-                                    <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportClass" style="display: none;">
-                                        <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
-                                        <button id="submitBtn" type="submit">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
+                            </div>               
                         }
                     </div>
                 </div>
@@ -69,24 +51,44 @@
                                     <i style="justify-content: flex-start;"
                                        class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                     <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
-                                           class="form-control search-input" placeholder="Search Here">
+                                           class="form-control search-input" placeholder="Nội dung tìm kiếm">
                                 </div>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div style="display: flex;">
-                            <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Status</p>
+                            <p style="justify-content: flex-start; margin-top:9px white-space: nowrap" class="mr-10">Trạng thái</p>
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="Status" class="custom-select">
-                                    <option selected="" value="null">All</option>
+                                    <option selected="" value="null">Tất cả</option>
                                     <option value="True">Hoạt động</option>
                                     <option value="False">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Filter</button>
+                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
+                    <div class="row-page btn-file">
+                        <div class="col-md-2 col-sm-12 text-left">
+                            <div class="dropdown">
+                                <a class="btn btn-outline-danger" asp-page="ExportClassRoom">
+                                    Xuất
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-12 text-left">
+                            <div class="dropdown">
+                                <a class="btn btn-outline-success" onclick="chooseFile()">
+                                    Nhập
+                                </a>
+                                <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportClassRoom" style="display: none;">
+                                    <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
+                                    <button id="submitBtn" type="submit">Xác nhận</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     @*<div class="col-md-3">
                     <div style="display: flex;">
                     <p style="justify-content: flex-start;margin-top:9px" class="mr-10">Status</p>
@@ -108,14 +110,14 @@
                     <thead style="background-color: lightgray">
                         <tr>
                             <th>#</th>
-                            <th>Class Name</th>
-                            <th>Class Code</th>
-                            <th>Department</th>
-                            <th>Teacher</th>
-                            <th>Status</th>
-                            <th>Created Date</th>
-                            <th>Last Modified Date</th>
-                            <th>Action</th>
+                            <th>Tên lớp học</th>
+                            <th>Mã lớp học</th>
+                            <th>Khoa</th>
+                            <th>Giảng viên</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày chỉnh sửa</th>
+                            <th>Hành động</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -148,7 +150,7 @@
                                         else
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id"><i class="dw dw-edit2"></i>View</a>
+                                                <a class="dropdown-item" asp-page="UpdateClass" asp-route-id="@item.Id"><i class="dw dw-edit2"></i>Xem</a>
 
                                             </div>
                                         }
@@ -170,14 +172,14 @@
                 var prev = Model.PageIndex > 1 ? "" : "disabled";
                 var next = Model.PageIndex < Model.TotalPage ? "" : "disabled";
             }
-            <div class="row">
-                <div class="btn-group mb-15" style="margin-left:15px;">
-                    <a class="btn btn-light @prev" asp-page="./ClassRoom" asp-route-pageIndex="@(Model.PageIndex-1)">Previous</a>
+            <div class="row-number">
+                <div class="btn-group mb-15">
+                    <a class="btn btn-light @prev" asp-page="./ClassRoom" asp-route-pageIndex="@(Model.PageIndex-1)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
                     {
                         <a class="btn @(i == Model.PageIndex ? "btn-success" : "btn-light")" asp-page="./ClassRoom" asp-route-pageIndex="@i">@i</a>
                     }
-                    <a class="btn btn-light @next" asp-page="./ClassRoom" asp-route-pageIndex="@(Model.PageIndex+1)">Next</a>
+                    <a class="btn btn-light @next" asp-page="./ClassRoom" asp-route-pageIndex="@(Model.PageIndex+1)">Sau</a>
                 </div>
             </div>
         </div>
@@ -190,7 +192,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myLargeModalLabel">
-                    List Student
+                    Quan lí sinh viên
                 </h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     ×
@@ -210,7 +212,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                    Close
+                    Đóng
                 </button>
             </div>
         </div>

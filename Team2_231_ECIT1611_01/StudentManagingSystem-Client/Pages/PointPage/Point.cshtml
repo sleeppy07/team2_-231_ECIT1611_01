@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Point List</h4>
+                            <h4>Quản lý điểm</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Mark report</li>
+                                <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Điểm</li>
                             </ol>
                         </nav>
                     </div>
@@ -28,7 +28,7 @@
                             <div class="col-md-4 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddPoint">
-                                        Add Point
+                                        Thêm mới
                                     </a>
                                 </div>
                             </div>
@@ -38,7 +38,7 @@
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a id="deleteButton" class="btn btn-danger disabled">
-                                        Delete
+                                        Xóa
                                     </a>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="col-md-2 col-sm-12 text-left">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-route-classId="@Model.ClassId" asp-page="ExportPoint">
-                                        Export
+                                        Xuất
                                     </a>
                                 </div>
                             </div>
@@ -59,11 +59,11 @@
                             <div class="col-md-2 col-sm-12 text-left">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-success" onclick="chooseFile()">
-                                        Import
+                                        Nhập
                                     </a>
                                     <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportPoint" style="display: none;">
                                         <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
-                                        <button id="submitBtn" type="submit">Submit</button>
+                                        <button id="submitBtn" type="submit">Xác nhận</button>
                                     </form>
                                 </div>
                             </div>
@@ -78,31 +78,31 @@
                     <div class="col-md-3">
                         <div class="header-search">
                             @*<form method="get">*@
-                            <div class="form-group mb-0" style="display:flex">
+                            <div class="form-group mb-15" style="display:flex">
                                 <i style="justify-content: flex-start;"
                                    class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                 <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
-                                       class="form-control search-input" placeholder="Search Here">
+                                       class="form-control search-input" placeholder="Nội dung tìm kiếm">
                             </div>
                             @*</form>*@
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                         <div class="header-search">
                             @*<form method="get">*@
                             <div class="form-group mb-0" style="display:flex">
                                 <input asp-for="Semester" style="justify-content: flex-end;" type="number"
-                                       class="form-control search-input" placeholder="Semester">
+                                       class="form-control search-input" placeholder="Học kì">
                             </div>
                             @*</form>*@
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div style="display: flex;">
-                            <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Subject</p>
+                            <p style="justify-content: flex-start; margin-top:9px white-space: nowrap" class="mr-10">Môn học</p>
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="SubjectId" class="custom-select">
-                                    <option value="null">All</option>
+                                    <option value="null">Tất cả</option>
                                     @foreach (var item in Model.ListSubject)
                                     {
                                         <option value="@item.Id">@item.SubjectName</option>
@@ -115,10 +115,10 @@
                     {
                         <div class="col-md-3">
                             <div style="display: flex;">
-                                <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Class</p>
+                                <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Lớp học</p>
                                 <div style="justify-content: flex-end; width: 200px;">
                                     <select asp-for="ClassId" class="custom-select">
-                                        <option value="null">All</option>
+                                        <option value="null">Tất cả</option>
                                         @foreach (var item in Model.ListClassRoom)
                                         {
                                             <option value="@item.Id">@item.ClassName</option>
@@ -135,7 +135,7 @@
                                 <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Student</p>
                                 <div style="justify-content: flex-end; width: 200px;">
                                     <select asp-for="StudentId" class="custom-select">
-                                        <option value="null">All</option>
+                                        <option value="null">Tất cả</option>
                                         @foreach (var item in Model.ListStudent)
                                         {
                                             <option value="@item.Id">@item.StudentName</option>
@@ -146,7 +146,7 @@
                         </div>
                     }
 
-                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Filter</button>
+                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
                 </div>
             </form>
             <div class="table-responsive">
@@ -154,18 +154,18 @@
                     <thead style="background-color: lightgray">
                         <tr>
                             <th>#</th>
-                            <th>Student Name</th>
-                            <th>Student Code</th>
-                            <th>Subject Name</th>
-                            <th>Subject Code</th>
-                            <th>Semester</th>
-                            <th>Progress Point</th>
-                            <th>Midterm Point</th>
-                            <th>Final Point</th>
-                            <th>Result</th>
-                            <th>Created Date</th>
-                            <th>Last Modified Date</th>
-                            <th>Action</th>
+                            <th>Tên sinh viên</th>
+                            <th>MSV</th>
+                            <th>Tên môn</th>
+                            <th>Mã môn</th>
+                            <th>Học kỳ</th>
+                            <th>ĐCC</th>
+                            <th>Điểm KT</th>
+                            <th>ĐIểm cuối kì</th>
+                            <th>Kết quả</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày chỉnh sửa</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -227,16 +227,16 @@
                     <p class="text-danger" style="font-style:italic">@ViewData["mess"]</p>
                 </div>
             }
-            <div class="row">
+            <div class="row-number">
                 <div class="btn-group mb-15" style="margin-left:15px;">
                     <a class="btn btn-light @prev" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex-1)"
-                       asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Previous</a>
+                       asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
                     {
                         <a class="btn @(i == Model.PageIndex ? "btn-success" : "btn-light")" asp-page="./Point" asp-route-pageIndex="@i"
                        asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">@i</a>
                     }
-                    <a class="btn btn-light @next" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex+1)" asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Next</a>
+                    <a class="btn btn-light @next" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex+1)" asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Trước</a>
                 </div>
             </div>
         </div>
