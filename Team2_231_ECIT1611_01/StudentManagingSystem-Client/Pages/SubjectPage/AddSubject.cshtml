@@ -15,8 +15,8 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Subject">Subject List</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Add Subject</li>
+                                <li class="breadcrumb-item"><a asp-page="Subject">Quản lý môn học</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
                             </ol>
                         </nav>
                     </div>
@@ -26,17 +26,17 @@
             <div class="pd-20 card-box mb-30">
                 <form method="post">
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.SubjectName" class="col-sm-12 col-md-2 col-form-label">Subject Name</label>
+                        <label asp-for="SubjectAddRequest.SubjectName" class="col-sm-12 col-md-2 col-form-label">Tên môn học</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.SubjectName" class="form-control" type="text" placeholder="Subject name" required="required">
+                            <input asp-for="SubjectAddRequest.SubjectName" class="form-control" type="text" placeholder="Tên môn học" required="required">
                         </div>
                     </div>
                     @if (ViewData["messageCode"] != null)
                     {
                         <div class="form-group row">
-                            <label asp-for="SubjectAddRequest.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
+                            <label asp-for="SubjectAddRequest.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Mã môn học</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="SubjectAddRequest.SubjectCode" class="form-control form-control-danger" type="text" placeholder="Subject Code" required="required">
+                                <input asp-for="SubjectAddRequest.SubjectCode" class="form-control form-control-danger" type="text" placeholder="Mã môn học" required="required">
                                 <span asp-validation-for="SubjectAddRequest.SubjectCode" class="text-danger"></span>
                                 <div style="margin-top: 10px;font-style: italic" ; class="form-control-feedback text-danger">
                                     @ViewData["messageCode"]
@@ -47,38 +47,46 @@
                     else
                     {
                         <div class="form-group row">
-                            <label asp-for="SubjectAddRequest.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Subject Code</label>
+                            <label asp-for="SubjectAddRequest.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Mã môn học</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="SubjectAddRequest.SubjectCode" class="form-control" type="text" placeholder="Subject Code" required="required">
+                                <input asp-for="SubjectAddRequest.SubjectCode" class="form-control" type="text" placeholder="Mã môn học" required="required">
                                 <span asp-validation-for="SubjectAddRequest.SubjectCode" class="text-danger"></span>
                             </div>
                         </div>
                     }
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Description" class="col-sm-12 col-md-2 col-form-label">Description</label>
+                        <label>Giảng viên</label>
+                        <select asp-for="SubjectAddRequest.UserId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
+                            @foreach (var item in Model.listUser)
+                            {
+                                <option value="@item.Id">@item.FullName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group row">
+                        <label asp-for="SubjectAddRequest.Description" class="col-sm-12 col-md-2 col-form-label">Mô tả</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.Description" class="form-control" type="text" placeholder="Description">
+                            <input asp-for="SubjectAddRequest.Description" class="form-control" type="text" placeholder="Mô tả">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Semester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
+                        <label asp-for="SubjectAddRequest.Semester" class="col-sm-12 col-md-2 col-form-label">Học kỳ</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="SubjectAddRequest.Semester" class="form-control" type="number" placeholder="Semester" required="required">
+                            <input asp-for="SubjectAddRequest.Semester" class="form-control" type="number" placeholder="Học kỳ" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="SubjectAddRequest.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <label asp-for="SubjectAddRequest.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                         <div class="col-sm-12 col-md-10">
                             <select asp-for="SubjectAddRequest.Status" class="custom-select col-12">
-                                <option selected="">Choose...</option>
                                 <option value="true">Hoạt động</option>
                                 <option value="false">Không hoạt động</option>
                             </select>
                         </div>
                     </div>
                     <div class="btn-list">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a asp-page="Subject" type="submit" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <a asp-page="Subject" type="submit" class="btn btn-danger">Thoát</a>
                     </div>
                 </form>
             </div>
