@@ -19,7 +19,6 @@ namespace BusinessObject.Model
         public DbSet<Point> Points { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Notification> Notifications { get; set; }
-        public DbSet<SubjectDetail> SubjectDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

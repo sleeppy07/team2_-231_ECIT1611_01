@@ -109,6 +109,7 @@
                             <th>#</th>
                             <th>Tên môn học</th>
                             <th>Mã môn học</th>
+                            <th>Giảng viên</th>
                             <th>Trạng thái</th>
                             <th>Mô tả</th>
                             <th>Kỳ</th>
@@ -126,6 +127,7 @@
                                 </td>
                                 <td class="table-plus">@item.SubjectName</td>
                                 <td>@item.SubjectCode</td>
+                                <td>@(string.IsNullOrEmpty(item.User.FullName) ? string.Empty : item.User.FullName)</td>
                                 <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
                                 <td>@item.Description</td>
                                 <td>@item.Semester</td>

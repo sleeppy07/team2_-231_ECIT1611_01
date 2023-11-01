@@ -213,6 +213,7 @@ namespace StudentManagingSystem_API.DTO
         public bool? Status { get; set; }
         public string? Description { get; set; }
         public int? Semester { get; set; }
+        public string? UserId { get; set; }
         //tín chỉ
         public int? Credit { get; set; }
         [JsonIgnore]

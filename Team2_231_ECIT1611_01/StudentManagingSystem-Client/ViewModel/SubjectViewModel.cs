@@ -30,6 +30,7 @@ namespace StudentManagingSystem_Client.ViewModel
         public int? Semester { get; set; }
         //tín chỉ
         public int? Credit { get; set; }
+        public string? UserId { get; set; }
         [JsonIgnore]
         public string? CreatedBy { get; set; }
         [JsonIgnore]
