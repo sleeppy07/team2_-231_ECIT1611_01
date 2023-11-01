@@ -17,10 +17,13 @@ namespace StudentManagingSystem_Client.Pages.SubjectPage
         public Subject Subject { get; set; }
         [BindProperty(SupportsGet = true)]
         public int PageIndex { get; set; }
+        public List<AppUser> listUser { get; set; }
+
         public async Task<IActionResult> OnGetAsync(Guid id)
         {
             var client = new ClientService(HttpContext);
             Subject = await client.GetDetail<Subject>("/api/Subject/detail", $"?id={id}");
+            listUser = await client.GetAll<List<AppUser>>("/api/Teacher/getall");
             return Page();
         }
         public async Task<IActionResult> OnPostAsync()
