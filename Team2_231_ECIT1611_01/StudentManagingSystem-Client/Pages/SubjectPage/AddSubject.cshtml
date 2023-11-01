@@ -55,6 +55,15 @@
                         </div>
                     }
                     <div class="form-group row">
+                        <label>Giảng viên</label>
+                        <select asp-for="SubjectAddRequest.UserId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
+                            @foreach (var item in Model.listUser)
+                            {
+                                <option value="@item.Id">@item.FullName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group row">
                         <label asp-for="SubjectAddRequest.Description" class="col-sm-12 col-md-2 col-form-label">Mô tả</label>
                         <div class="col-sm-12 col-md-10">
                             <input asp-for="SubjectAddRequest.Description" class="form-control" type="text" placeholder="Mô tả">
@@ -70,7 +79,6 @@
                         <label asp-for="SubjectAddRequest.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                         <div class="col-sm-12 col-md-10">
                             <select asp-for="SubjectAddRequest.Status" class="custom-select col-12">
-                                <option selected="">Chọn...</option>
                                 <option value="true">Hoạt động</option>
                                 <option value="false">Không hoạt động</option>
                             </select>

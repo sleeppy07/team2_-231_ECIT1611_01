@@ -1284,7 +1284,7 @@ table.dataTable>tbody>tr.child ul.dtr-details .dtr-title {
     background-color: white;
 }
 thead{
-    text-align: center;
+    text-align: left;
 }
 thead.table-thead{
     border-bottom: 1px solid #e0e0e0;
@@ -1798,9 +1798,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 }
 
 .brand-logo {
-    width: 280px;
+    width: 240px;
     height: 70px;
-    border-bottom: 1px solid rgba(0, 0, 0, .1)
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    justify-content: center;
 }
 
 .brand-logo a {

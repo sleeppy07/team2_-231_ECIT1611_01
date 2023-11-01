@@ -17,6 +17,14 @@ namespace StudentManagingSystem_Client.Pages.SubjectPage
        
         [BindProperty]
         public SubjectAddRequest SubjectAddRequest { get; set; }
+        public List<AppUser> listUser { get; set; }
+
+        public async Task<IActionResult> OnGetAsync()
+        {
+            var client = new ClientService(HttpContext);
+            listUser = await client.GetAll<List<AppUser>>("/api/Teacher/getall");
+            return Page();
+        }
 
         public async Task<IActionResult> OnPostAsync()
         {

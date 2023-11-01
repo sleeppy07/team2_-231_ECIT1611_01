@@ -53,6 +53,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label asp-for="Subject.UserId" class="col-sm-12 col-md-2 col-form-label">Giảng viên</label>
+                            <div class="col-sm-12 col-md-10">
+                            <select asp-for="Subject.UserId" class="custom-select col-12">
+                                @foreach (var item in Model.listUser)
+                                {
+                                    <option value="@item.Id">@item.FullName</option>
+                                }
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label asp-for="Subject.Description" class="col-sm-12 col-md-2 col-form-label">Mô tả</label>
                             <div class="col-sm-12 col-md-10">
                                 <input asp-for="Subject.Description" class="form-control" type="text" placeholder="Mô tả">
@@ -101,6 +112,17 @@
                             <label asp-for="Subject.SubjectCode" class="col-sm-12 col-md-2 col-form-label">Mã môn học</label>
                             <div class="col-sm-12 col-md-10">
                                 <input asp-for="Subject.SubjectCode" class="form-control" type="text" placeholder="Mã môn học" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label asp-for="Subject.UserId" class="col-sm-12 col-md-2 col-form-label">Giảng viên</label>
+                            <div class="col-sm-12 col-md-10">
+                            <select asp-for="Subject.UserId" class="custom-select col-12" disabled="disabled">
+                                @foreach (var item in Model.listUser)
+                                {
+                                    <option value="@item.Id">@item.FullName</option>
+                                }
+                            </select>
                             </div>
                         </div>
                         <div class="form-group row">

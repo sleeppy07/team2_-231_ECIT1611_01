@@ -16,14 +16,14 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Point">Mark List</a></li>
+                                <li class="breadcrumb-item"><a asp-page="Point">Quản lý điểm</a></li>
                                 @if (User.IsInRole(RoleConstant.ADMIN) || User.IsInRole(RoleConstant.TEACHER))
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Edit Point</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                                 else
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                             </ol>
                         </nav>
@@ -39,20 +39,20 @@
                             <input asp-for="Point.Id" class="form-control" type="hidden">
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Point.ProgessPoint" class="col-sm-12 col-md-2 col-form-label">Progress Point</label>
+                            <label asp-for="Point.ProgessPoint" class="col-sm-12 col-md-2 col-form-label">Điểm quá trình</label>
                             <div class="col-sm-12 col-md-10">
                                 <input asp-for="Point.ProgessPoint" class="form-control" type="number" step="0.01" placeholder="Progress">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Point.MidtermPoint" class="col-sm-12 col-md-2 col-form-label">Midterm Point</label>
+                            <label asp-for="Point.MidtermPoint" class="col-sm-12 col-md-2 col-form-label">Điểm thảo luận</label>
                             <div class="col-sm-12 col-md-10">
                                 <input asp-for="Point.MidtermPoint" class="form-control" type="number" step="0.01" placeholder="Midterm">
                             </div>
                         </div>
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a asp-page="Point" type="submit" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a asp-page="Point" type="submit" class="btn btn-danger">Thoát</a>
                         </div>
                     </form>
                 </div>
@@ -62,13 +62,13 @@
                 <div class="pd-20 card-box mb-30">
                     <form method="post">
                         <div class="form-group row">
-                            <label asp-for="Point.Id" class="col-sm-12 col-md-2 col-form-label">Progress Point</label>
+                            <label asp-for="Point.Id" class="col-sm-12 col-md-2 col-form-label">Điểm quá trình</label>
                             <div class="col-sm-12 col-md-10">
                                 <input asp-for="Point.Id" class="form-control" type="hidden">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Subject</label>
+                            <label>Môn học</label>
                             <select asp-for="Point.SubjectId" class="custom-select2 form-control disable" style="width: 100%; height: 38px;" disabled="disabled">
                                 @foreach (var item in Model.ListSubject)
                                 {
@@ -77,7 +77,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Student</label>
+                            <label>Sinh viên</label>
                             <select asp-for="Point.StudentId" class="custom-select2 form-control disable" style="width: 100%; height: 38px;" disabled="disabled">
                                 @foreach (var item in Model.ListStudent)
                                 {
@@ -86,25 +86,25 @@
                             </select>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Point.ProgessPoint" class="col-sm-12 col-md-2 col-form-label">Progress Point - 50%</label>
+                            <label asp-for="Point.ProgessPoint" class="col-sm-12 col-md-2 col-form-label">Điểm quá trình - 50%</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Point.ProgessPoint" class="form-control" type="number" placeholder="Progress" readonly="readonly">
+                                <input asp-for="Point.ProgessPoint" class="form-control" type="number" placeholder="Điểm quá trình" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Point.MidtermPoint" class="col-sm-12 col-md-2 col-form-label">Midterm Point - 50%</label>
+                            <label asp-for="Point.MidtermPoint" class="col-sm-12 col-md-2 col-form-label">Điểm thảo luận - 50%</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Point.MidtermPoint" class="form-control" type="number" placeholder="Midterm" readonly="readonly">
+                                <input asp-for="Point.MidtermPoint" class="form-control" type="number" placeholder="Điểm thảo luận" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Point.FinalPoint" class="col-sm-12 col-md-2 col-form-label">Total Point</label>
+                            <label asp-for="Point.FinalPoint" class="col-sm-12 col-md-2 col-form-label">Điểm tổng kết</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Point.FinalPoint" class="form-control" type="number" placeholder="Final" readonly="readonly">
+                                <input asp-for="Point.FinalPoint" class="form-control" type="number" placeholder="Điểm tổng kết" readonly="readonly">
                             </div>
                         </div>
                         <div class="btn-list">
-                            <a asp-page="Point" type="submit" class="btn btn-primary">Back</a>
+                            <a asp-page="Point" type="submit" class="btn btn-primary">Quay lại</a>
                         </div>
                     </form>
                 </div>

@@ -59,7 +59,7 @@ namespace DataAccess.Repository
 
         public async Task<Subject> GetById(Guid id)
         {
-            var subject = await _context.Subjects.FirstOrDefaultAsync(i => i.Id == id);
+            var subject = await _context.Subjects.Where(i => i.Id == id).Include(m => m.User).FirstOrDefaultAsync();
             if (subject == null) throw new ArgumentException("Can not find !!!");
             return subject;
         }
@@ -96,9 +96,22 @@ namespace DataAccess.Repository
             }
         }
 
-        public async Task<PagedList<Subject>> Search(string? keyword, bool? status, int? semester, int page, int pagesize)
+        public async Task<PagedList<Subject>> Search(string? keyword, bool? status, int? semester, string? UserId, int page, int pagesize)
         {
+            var ListSubject = new List<Guid>();
+            if(!string.IsNullOrEmpty(UserId))
+            {
+                //var QuerySubject = await _context.SubjectDetails.Where(m => m.UserId == UserId).Select(m => (Guid)m.SubjectId).ToListAsync();
+                //QuerySubject = ListSubject;
+            }
+
             var query = _context.Subjects.AsQueryable();
+
+            if(ListSubject.Count() > 0)
+            {
+                query = query.Where(m => ListSubject.Contains((Guid)m.Id));
+            }
+
             if (!string.IsNullOrEmpty(keyword))
             {
                 query = query.Where(c => (!string.IsNullOrEmpty(c.SubjectName) && c.SubjectName.Contains(keyword.ToLower().Trim()))
@@ -112,7 +125,7 @@ namespace DataAccess.Repository
             {
                 query = query.Where(i => i.Semester == semester);
             }
-            var query1 = query.OrderByDescending(c => c.CreatedDate);
+            var query1 = query.Include(m => m.User).OrderByDescending(c => c.CreatedDate);
             var query2 = await query1.Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();
             var res = await query.ToListAsync();
@@ -142,13 +155,13 @@ namespace DataAccess.Repository
                 {
                     query = query.Where(i => i.Student.Id == null);
                 }
-                query = query.Where(i => i.Student.Id == stuId);
+                else query = query.Where(i => i.Student.Id == stuId);
             }
             if (semester != null)
             {
                 query = query.Where(i => i.Subject.Semester == semester);
             }
-            var query1 = query.Include(i => i.Subject).OrderByDescending(c => c.CreatedDate);
+            var query1 = query.Include(i => i.Subject).ThenInclude(m => m.User).OrderByDescending(c => c.CreatedDate);
             var query2 = await query1.Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();
             var res = await query1.ToListAsync();

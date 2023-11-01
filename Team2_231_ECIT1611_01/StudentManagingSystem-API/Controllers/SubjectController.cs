@@ -29,15 +29,17 @@ namespace StudentManagingSystem_API.Controllers
             _configuration = configuration;
         }
 
-        private string? GetUserIdFromConext()
-        {
-            var a = User.FindFirstValue(ClaimTypes.Sid);
-            return a;
-        }
-
         private string? GetNameFromConext()
         {
             return User.FindFirstValue(ClaimTypes.Name);
+        }
+        private string GetUserRoleFromContext()
+        {
+            return User.FindFirstValue(ClaimTypes.Role);
+        }
+        private string GetUserIdFromContext()
+        {
+            return User.FindFirstValue(ClaimTypes.Sid);
         }
 
         [Authorize(Roles = RoleConstant.ADMIN)]
@@ -132,7 +134,13 @@ namespace StudentManagingSystem_API.Controllers
         {
             try
             {
-                var res = await _repository.Search(rq.keyword, rq.status, rq.semester, rq.page, rq.pagesize);
+                var userId = GetUserIdFromContext();
+                var userRole = GetUserRoleFromContext();
+                if (User.IsInRole(RoleConstant.ADMIN))
+                {
+                    userId = string.Empty;
+                }
+                var res = await _repository.Search(rq.keyword, rq.status, rq.semester, userId, rq.page, rq.pagesize);
                 return Ok(res);
             }
             catch (Exception ex)
@@ -198,13 +206,13 @@ namespace StudentManagingSystem_API.Controllers
                 List<Guid>? request;
                 if (User.IsInRole(RoleConstant.STUDENT))
                 {
-                    var studentId = Guid.Parse(GetUserIdFromConext());
+                    var studentId = Guid.Parse(GetUserIdFromContext());
                     var rp2 = await _repository.SearchByStudent(rq.keyword, rq.status, studentId, rq.semester, rq.page, rq.pagesize);
                     request = rp2.Data.Select(i => i.Id).ToList();
                 }
                 else
                 {
-                    var rp2 = await _repository.Search(rq.keyword, rq.status, rq.semester, rq.page, rq.pagesize);
+                    var rp2 = await _repository.Search(rq.keyword, rq.status, rq.semester, string.Empty, rq.page, rq.pagesize);
                     request = rp2.Data.Select(i => i.Id).ToList();
                 }
                 

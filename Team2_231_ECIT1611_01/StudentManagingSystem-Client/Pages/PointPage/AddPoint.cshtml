@@ -15,8 +15,8 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Point">Mark List</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Add point</li>
+                                <li class="breadcrumb-item"><a asp-page="Point">Quản lý điểm</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Thêm mới</li>
                             </ol>
                         </nav>
                     </div>
@@ -28,7 +28,7 @@
                     @if (ViewData["messageCode"] != null)
                     {
                         <div class="form-group">
-                            <label>Subject</label>
+                            <label>Môn học</label>
                             <select asp-for="PointAddRequest.SubjectId" class="selectpicker form-control form-control-danger" style="width: 100%; height: 38px;">
                                 @foreach (var item in Model.ListSubject)
                                 {
@@ -43,7 +43,7 @@
 
                     }else{
                         <div class="form-group">
-                            <label>Subject</label>
+                            <label>Môn học</label>
                             <select asp-for="PointAddRequest.SubjectId" class="selectpicker form-control" style="width: 100%; height: 38px;">
                                 @foreach (var item in Model.ListSubject)
                                 {
@@ -56,7 +56,7 @@
                     @if (ViewData["messageCode"] != null)
                     {
                         <div class="form-group">
-                            <label>Student</label>
+                            <label>Sinh viên</label>
                             <select asp-for="PointAddRequest.StudentId" class="custom-select2 form-control form-control-danger" style="width: 100%; height: 38px;">
                                 @foreach (var item in Model.ListStudent)
                                 {
@@ -71,7 +71,7 @@
 
                     }else{
                         <div class="form-group">
-                            <label>Student</label>
+                            <label>Sinh viên</label>
                             <select asp-for="PointAddRequest.StudentId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
                                 @foreach (var item in Model.ListStudent)
                                 {
@@ -81,20 +81,20 @@
                         </div>
                     }
                     <div class="form-group row">
-                        <label asp-for="PointAddRequest.ProgessPoint" class="col-sm-12 col-md-2 col-form-label">Progress Point</label>
+                        <label asp-for="PointAddRequest.ProgessPoint" class="col-sm-12 col-md-2 col-form-label">Điểm quá trình</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="PointAddRequest.ProgessPoint" class="form-control" type="number" step="0.01" placeholder="Progress">
+                            <input asp-for="PointAddRequest.ProgessPoint" class="form-control" type="number" step="0.01" placeholder="Điểm quá trình">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="PointAddRequest.MidtermPoint" class="col-sm-12 col-md-2 col-form-label">Midterm Point</label>
+                        <label asp-for="PointAddRequest.MidtermPoint" class="col-sm-12 col-md-2 col-form-label">Điểm thảo luận</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="PointAddRequest.MidtermPoint" class="form-control" type="number" step="0.01" placeholder="Midterm">
+                            <input asp-for="PointAddRequest.MidtermPoint" class="form-control" type="number" step="0.01" placeholder="Điểm thảo luận">
                         </div>
                     </div>
                     <div class="btn-list">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a asp-page="Point" type="submit" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <a asp-page="Point" type="submit" class="btn btn-danger">Thoát</a>
                     </div>
                 </form>
             </div>
