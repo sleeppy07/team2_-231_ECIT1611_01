@@ -16,6 +16,8 @@ namespace BusinessObject.Model
         //Tín chỉ
         public int? Credit { get; set; }
         public int? Semester { get; set; }
+        public string? UserId { get; set; }
+        public AppUser? User { get; set; }
         public ICollection<Point> Point { get; set; }
     }
 }

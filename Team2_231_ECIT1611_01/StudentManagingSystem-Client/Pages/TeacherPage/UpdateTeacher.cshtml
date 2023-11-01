@@ -12,8 +12,8 @@
                     <div class="col-md-6 col-sm-12">
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="TeacherPage/Teacher">Teacher List</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit Teacher</li>
+                                <li class="breadcrumb-item"><a asp-page="Teacher">Quản lý giảng viên</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                             </ol>
                         </nav>
                     </div>
@@ -24,7 +24,7 @@
                 <form method="post">
                     <input asp-for="Teacher.Id" class="form-control" type="hidden">
                     <div class="form-group row">
-                        <label asp-for="Teacher.FullName" class="col-sm-12 col-md-2 col-form-label">Name</label>
+                        <label asp-for="Teacher.FullName" class="col-sm-12 col-md-2 col-form-label">Tên</label>
                         <div class="col-sm-12 col-md-10">
                             <input asp-for="Teacher.FullName" class="form-control" type="text">
                         </div>
@@ -36,30 +36,30 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Teacher.Adress" class="col-sm-12 col-md-2 col-form-label">Adress</label>
+                        <label asp-for="Teacher.Adress" class="col-sm-12 col-md-2 col-form-label">Địa chỉ</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Teacher.Adress" class="form-control" type="text" placeholder="Adress">
+                            <input asp-for="Teacher.Adress" class="form-control" type="text" placeholder="Địa chỉ">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Teacher.Phone" class="col-sm-12 col-md-2 col-form-label">Phone</label>
+                        <label asp-for="Teacher.Phone" class="col-sm-12 col-md-2 col-form-label">SĐT</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Teacher.Phone" class="form-control" type="text" placeholder="Phone">
+                            <input asp-for="Teacher.Phone" class="form-control" type="text" placeholder="SĐT">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Teacher.Activated" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <label asp-for="Teacher.Activated" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                         <div class="col-sm-12 col-md-10">
                             <select asp-for="Teacher.Activated" class="custom-select col-12">
-                                <option selected="">Choose...</option>
+                                <option selected="">Chọn...</option>
                                 <option value="true">Hoạt động</option>
                                 <option value="false">Không hoạt động</option>
                             </select>
                         </div>
                     </div>
                     <div class="btn-list">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a asp-page="Teacher" type="submit" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <a asp-page="Teacher" type="submit" class="btn btn-danger">Thoát</a>
                     </div>
                 </form>
             </div>

@@ -11,7 +11,7 @@ using System.Data;
 
 namespace StudentManagingSystem_Client.Pages.StudentPage
 {
-    [Authorize(Roles = RoleConstant.ADMIN)]
+    [Authorize(Roles = RoleConstant.ADMIN + "," + RoleConstant.TEACHER)]
     public class UpdateStudentModel : PageModel
     {
         

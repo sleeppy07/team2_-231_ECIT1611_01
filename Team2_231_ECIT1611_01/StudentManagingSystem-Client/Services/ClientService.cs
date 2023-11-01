@@ -14,11 +14,13 @@ namespace StudentManagingSystem_Client.Services
         public ClientService(HttpContext httpContext, HttpClient? client = null)
         {
             _httpContext = httpContext;
-            var appSettingsJson = File.ReadAllText("appsettings.json");
-            var appSettings = JObject.Parse(appSettingsJson);
-            var baseAddress = appSettings["BaseAddress"].Value<string>();
+
+            var AppsettingFile = File.ReadAllText("appsettings.json");
+            var ConvertAppsetting = JObject.Parse(AppsettingFile);
+            var BaseAddress = ConvertAppsetting["BaseAddress"].Value<string>();
+
             _client = client ?? new HttpClient();
-            _client.BaseAddress = new Uri(baseAddress);
+            _client.BaseAddress = new Uri(BaseAddress);
             _client.DefaultRequestHeaders.Clear();
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _httpContext.Request.Cookies["AccessToken"]);
         }

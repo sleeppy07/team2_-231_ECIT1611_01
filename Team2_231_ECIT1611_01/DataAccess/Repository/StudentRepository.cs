@@ -70,9 +70,22 @@ namespace DataAccess.Repository
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<PagedList<Student>> GetAll(string? keyword, bool? status, int page, int pagesize)
+        public async Task<PagedList<Student>> GetAll(string? keyword, bool? status, string? UserId, int page, int pagesize)
         {
+            var ListClass = new List<Guid>();
+            if (!string.IsNullOrEmpty(UserId))
+            {
+                var queryClass = await _context.ClassRooms.Where(m => m.UserId == UserId).Select(m => m.Id).ToListAsync();
+                ListClass = queryClass;
+            }
+
             var query = _context.Students.AsQueryable();
+
+            if(ListClass.Count() > 0)
+            {
+                query = query.Where(m => ListClass.Contains((Guid)m.ClassRoomId));
+            }
+
             if (!string.IsNullOrEmpty(keyword))
             {
                 query = query.Where(c => (!string.IsNullOrEmpty(c.StudentName) && c.StudentName.Contains(keyword.ToLower().Trim()))

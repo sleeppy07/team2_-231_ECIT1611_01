@@ -33,15 +33,17 @@ namespace StudentManagingSystem_API.Controllers
             _configuration = configuration;
         }
 
-        private string? GetUserIdFromConext()
-        {
-            var a = User.FindFirstValue(ClaimTypes.Sid);
-            return a;
-        }
-
         private string? GetNameFromConext()
         {
             return User.FindFirstValue(ClaimTypes.Name);
+        }
+        private string GetUserRoleFromContext()
+        {
+            return User.FindFirstValue(ClaimTypes.Role);
+        }
+        private string GetUserIdFromContext()
+        {
+            return User.FindFirstValue(ClaimTypes.Sid);
         }
 
         [Authorize(Roles = RoleConstant.ADMIN)]
@@ -121,7 +123,13 @@ namespace StudentManagingSystem_API.Controllers
         {
             try
             {
-                var res = await _repository.GetAll();
+                var userId = GetUserIdFromContext();
+                var userRole = GetUserRoleFromContext();
+                if(User.IsInRole(RoleConstant.ADMIN))
+                {
+                    userId = string.Empty;
+                }
+                var res = await _repository.GetAll(userId);
                 return Ok(res);
             }
             catch (Exception ex)
@@ -138,7 +146,7 @@ namespace StudentManagingSystem_API.Controllers
             {
                 if (User.IsInRole(RoleConstant.TEACHER))
                 {
-                    var res = await _repository.Search(rq.keyword, rq.status, GetUserIdFromConext(), rq.page, rq.pagesize);
+                    var res = await _repository.Search(rq.keyword, rq.status, GetUserIdFromContext(), rq.page, rq.pagesize);
                     var map = _mapper.Map<PagedList<ClassRoomSearchResponse>>(res);
                     return Ok(map);
                 }
@@ -164,7 +172,7 @@ namespace StudentManagingSystem_API.Controllers
                 var res = await _repository.ListStudentByClass(Id);
                 return Ok(res);
             }
-            catch (Exception ex)
+            catch (Exception ex)    
             {
                 return BadRequest(ex.Message);
             }
@@ -176,7 +184,7 @@ namespace StudentManagingSystem_API.Controllers
         {
             try
             {
-                rq.studentId = Guid.Parse(GetUserIdFromConext());
+                rq.studentId = Guid.Parse(GetUserIdFromContext());
                 var res = await _repository.SearchClassByStudent(rq.keyword, rq.status, rq.studentId, rq.page, rq.pagesize);
                 return Ok(res);
             }
@@ -240,14 +248,14 @@ namespace StudentManagingSystem_API.Controllers
                 }
                 else if (User.IsInRole(RoleConstant.TEACHER))
                 {
-                    rq.teacherId = GetUserIdFromConext();
+                    rq.teacherId = GetUserIdFromContext();
                     var rp2 = await _repository.Search(rq.keyword, rq.status, rq.teacherId, rq.page, rq.pagesize);
                     request = rp2.Data.Select(i => i.Id).ToList();
                 }
                 else
                 {
 
-                    rq.teacherId = GetUserIdFromConext();
+                    rq.teacherId = GetUserIdFromContext();
                     var rp2 = await _repository.SearchClassByStudent(rq.keyword, rq.status, Guid.Parse(rq.teacherId), rq.page, rq.pagesize);
                     request = rp2.Data.Select(i => i.Id).ToList();
                 }

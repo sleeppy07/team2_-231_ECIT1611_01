@@ -1,6 +1,6 @@
 /*!
 Version: 3.0.0
-Author: Ankit Hingarajiya - DeskApp
+Author: Ankit Hingarajiya - DeskApp - tesst
 */
 body,
 html {
@@ -89,12 +89,14 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0;
+    margin: auto;
     padding: 0;
     font-weight: 700;
+    text-align: center !important;
     color: #202342;
     font-family: 'Inter', sans-serif
 }
+
 
 ol,
 p,
@@ -1275,26 +1277,28 @@ table.dataTable>tbody>tr.child ul.dtr-details .dtr-title {
 .table thead th {
     font-weight: 600;
     font-size: 15px;
-    border-bottom: 6px;
+    border-bottom: 0;
     padding-left: 1rem;
-    background-color: white;
+    background-color: #1b00ff;
 }
-thead{
-    text-align: left;
+
+table, th, td {
+    border: 1px solid;
+    color: aqua;
 }
-thead.table-thead{
-    border-bottom: 1px solid #e0e0e0;
-    justify-content:center;
-}
+
 .table td,
 .table th {
-    vertical-align: middle
+    vertical-align: middle;
 }
 
 .table td {
     font-size: 14px;
     font-weight: 500;
     padding: 1rem
+}
+.table-bordered {
+    border-radius: 5px
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -1794,10 +1798,9 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 }
 
 .brand-logo {
-    width: 240px;
+    width: 280px;
     height: 70px;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
-    justify-content: center;
+    border-bottom: 1px solid rgba(0, 0, 0, .1)
 }
 
 .brand-logo a {
@@ -1846,13 +1849,21 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
     top: 0;
     height: 100%;
     -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out
+    transition: all .3s ease-in-out;
 }
 
 .left-side-bar {
-    width: 280px;
-    z-index: 1000;
-    background: #142127
+    background: #18283b;
+    margin: -16px 0;
+    padding: 16px 0;
+    position: relative;
+    flex: 1;
+    width: 256px;
+    background: #18283b;
+    box-shadow: 0 0 0 16px #18283b;
+    direction: rtl;
+    overflow-x: hidden;
+    transition: width 0.2s;
 }
 
 .left-side-bar .mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
@@ -2543,17 +2554,6 @@ body.IE .register-page-wrap .container {
     margin-bottom: 10px;
     cursor: pointer;
     border-radius: 8px
-}
-
-.row-page{
-    justify-content: right;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px
 }
 
 .fontawesome-icon-list .fa-hover:hover {
@@ -4752,7 +4752,7 @@ body.IE .register-page-wrap .container {
     margin-top: 6px
 }
 
-@media (min-width:1200px) and (max-width:1400px) {
+@media (min-width:1301px) and (max-width:1400px) {
     .header {
         width: calc(100% - 250px)
     }
@@ -4773,7 +4773,7 @@ body.IE .register-page-wrap .container {
     }
 }
 
-@media (min-width:1200px) {
+@media (min-width:1301px) {
 
     .sidebar-shrink .left-side-bar,
     .sidebar-shrink .left-side-bar.open {
@@ -4789,7 +4789,7 @@ body.IE .register-page-wrap .container {
     }
 }
 
-@media (max-width:1200px) {
+@media (max-width:1300px) {
     .main-container {
         padding-left: 5px;
         padding-right: 5px
@@ -4809,31 +4809,31 @@ body.IE .register-page-wrap .container {
         left: -281px
     }
 
-        .left-side-bar .close-sidebar {
-            display: block
-        }
+    .left-side-bar .close-sidebar {
+        display: block
+    }
 
-        .left-side-bar:before {
-            display: block;
-            opacity: 0;
-            visibility: hidden
-        }
+    .left-side-bar:before {
+        display: block;
+        opacity: 0;
+        visibility: hidden
+    }
 
-        .left-side-bar.open:before {
-            opacity: 1;
-            visibility: visible;
-            display: none
-        }
+    .left-side-bar.open:before {
+        opacity: 1;
+        visibility: visible;
+        display: none
+    }
 
-        .left-side-bar .brand-logo a {
-            text-align: left;
-            padding: 5px 15px
-        }
+    .left-side-bar .brand-logo a {
+        text-align: left;
+        padding: 5px 15px
+    }
 
-            .left-side-bar .brand-logo a .svg,
-            .left-side-bar .brand-logo a img {
-                margin: 0
-            }
+    .left-side-bar .brand-logo a .svg,
+    .left-side-bar .brand-logo a img {
+        margin: 0
+    }
 
     .header-right .brand-logo {
         display: table
@@ -4855,10 +4855,10 @@ body.IE .register-page-wrap .container {
         visibility: hidden
     }
 
-        .mobile-menu-overlay.show {
-            opacity: .6;
-            visibility: visible
-        }
+    .mobile-menu-overlay.show {
+        opacity: .6;
+        visibility: visible
+    }
 }
 
 @media (min-width:1025px) {

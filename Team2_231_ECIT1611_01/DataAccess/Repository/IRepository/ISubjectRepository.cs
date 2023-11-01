@@ -12,7 +12,7 @@ namespace DataAccess.Repository.IRepository
         Task<Subject> GetById(Guid id);
         Task<Guid> GetIdByCode(string code);
         Task<List<Subject>> GetAll();
-        Task<PagedList<Subject>> Search(string? keyword, bool? status,int? semester, int page, int pagesize);
+        Task<PagedList<Subject>> Search(string? keyword, bool? status,int? semester, string? UserId, int page, int pagesize);
         Task<PagedList<Subject>> SearchByStudent(string? keyword, bool? status,Guid? stuId, int? semester, int page, int pagesize);
         Task Import(List<Subject> listDept, CancellationToken cancellationToken = default);
         Task<bool> CheckAddExistCode(string code, CancellationToken cancellationToken = default);

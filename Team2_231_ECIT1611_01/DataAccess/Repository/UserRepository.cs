@@ -23,7 +23,7 @@ namespace DataAccess.Repository
 
         public async Task<List<AppUser>> GetAll()
         {
-            var list = await _context.AppUsers.Where(i => i.Activated && i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
+            var list = await _context.AppUsers.Where(i => i.Type == 1).OrderByDescending(i => i.CreatedDate).ToListAsync();
             return list;
         }
         public async Task<bool> CheckAddExistEmail(string email, CancellationToken cancellationToken = default)
@@ -49,14 +49,17 @@ namespace DataAccess.Repository
         {
             var User = await _userManager.FindByIdAsync(id);
             if (User == null) throw new ArgumentException("Can not find !!!");
-            User.Activated = false;
-            await _userManager.UpdateAsync(User);
 
             var c = await _context.ClassRooms.Where(i => i.UserId == id).ToListAsync();
             foreach (var item in c)
             {
                 item.UserId = null;
             }
+
+            await _context.SaveChangesAsync(cancellationToken);
+
+            await _userManager.DeleteAsync(User);
+
             await _context.SaveChangesAsync(cancellationToken);
         }
 
@@ -65,8 +68,7 @@ namespace DataAccess.Repository
             foreach(var item in id)
             {
                 var User = await _userManager.FindByIdAsync(item);
-                User.Activated = false;
-                await _userManager.UpdateAsync(User);
+                await _userManager.DeleteAsync(User);
             }
             var c = await _context.ClassRooms.Where(i => id.Contains(id.ToString())).ToListAsync();
             foreach (var item in c)

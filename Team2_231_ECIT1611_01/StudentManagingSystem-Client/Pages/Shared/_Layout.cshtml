@@ -45,40 +45,7 @@
             <div class="menu-icon dw dw-menu"></div>
             <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
             <div class="header-search">
-                <form>
-                    <div class="form-group mb-0">
-                        <i class="dw dw-search2 search-icon"></i>
-                        <input type="text" class="form-control search-input" placeholder="Search Here">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle no-arrow" href="#" role="button" data-toggle="dropdown">
-                                <i class="ion-arrow-down-c"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="form-group row">
-                                    <label class="col-sm-12 col-md-2 col-form-label">From</label>
-                                    <div class="col-sm-12 col-md-10">
-                                        <input class="form-control form-control-sm form-control-line" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-12 col-md-2 col-form-label">To</label>
-                                    <div class="col-sm-12 col-md-10">
-                                        <input class="form-control form-control-sm form-control-line" type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-12 col-md-2 col-form-label">Subject</label>
-                                    <div class="col-sm-12 col-md-10">
-                                        <input class="form-control form-control-sm form-control-line" type="text">
-                                    </div>
-                                </div>
-                                <div class="text-right">
-                                    <button class="btn btn-primary">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+
             </div>
         </div>
         <div class="header-right">
@@ -124,8 +91,8 @@
                             <span class="user-name">@User.Identity.Name</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                            <a class="dropdown-item" href="/UserProfile?id=@User.FindFirst(ClaimTypes.Sid)?.Value"><i class="dw dw-user1"></i> Profile</a>
-                            <a class="dropdown-item" href="/Logout"><i class="dw dw-logout"></i> Log Out</a>
+                            <a class="dropdown-item" href="/UserProfile?id=@User.FindFirst(ClaimTypes.Sid)?.Value"><i class="dw dw-user1"></i> Thông tin cá nhân</a>
+                            <a class="dropdown-item" href="/Logout"><i class="dw dw-logout"></i> Đăng xuất</a>
                         </div>
                     </div>
                 </div>
@@ -147,11 +114,11 @@
 
         </div>*@
         <div style="display:flex" class="brand-logo">
-            <a class="justify-content-lg-start" href="login.html">
+            <a class="justify-content-lg-start" href="Index.html">
                 <img style="max-width: 56px;" src="vendors/images/home-icon.png" alt="">
             </a>
             <div style="display: flex; flex-direction: column; justify-content: center">
-                <h5 class="text-white">SMS System</h5>
+                <h5 class="text-white" style="justify-content:center">SMS</h5>
             </div>
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
@@ -160,21 +127,27 @@
         <div class="menu-block customscroll">
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
-                    <li>
-                        <a href="/Index" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-house-1"></span><span class="mtext">Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/DepartmentPage/Department" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-list3"></span><span class="mtext">Department</span>
-                        </a>
-                    </li>
+                    @if (!User.IsInRole(RoleConstant.ADMIN))
+                    {
+                        <li>
+                            <a href="/Index" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
+                            </a>
+                        </li>
+                    }
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>
+                            <a href="/DepartmentPage/Department" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-list3"></span><span class="mtext">Quản lý khoa</span>
+                            </a>
+                        </li>
+                    }
+                    @if (User.IsInRole(RoleConstant.ADMIN) || User.IsInRole(RoleConstant.TEACHER))
+                    {
+                        <li>
                             <a href="/StudentPage/Student" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-12"></span><span class="mtext">Student</span>
+                                <span class="micon dw dw-user-12"></span><span class="mtext">Quản lý sinh viên</span>
                             </a>
                         </li>
                     }
@@ -182,31 +155,31 @@
                     {
                         <li>
                             <a href="/TeacherPage/Teacher" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-user-13"></span><span class="mtext">Teacher</span>
+                                <span class="micon dw dw-user-13"></span><span class="mtext">Quản lý giảng viên</span>
                             </a>
                         </li>
                     }
 
                     <li>
                         <a href="/ClassRoomPage/ClassRoom" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-open-book-2"></span><span class="mtext">Class</span>
+                            <span class="micon dw dw-open-book-2"></span><span class="mtext">Quản lý lớp học</span>
                         </a>
                     </li>
                     <li>
                         <a href="/SubjectPage/Subject" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-book2"></span><span class="mtext">Subject</span>
+                            <span class="micon dw dw-book2"></span><span class="mtext">Quản lý môn học</span>
                         </a>
                     </li>
                     <li>
                         <a href="/PointPage/Point" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-marker"></span><span class="mtext">Mark Report</span>
+                            <span class="micon dw dw-marker"></span><span class="mtext">Quản lý điểm</span>
                         </a>
                     </li>
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>
                             <a href="/NotificationPage/Notification" class="dropdown-toggle no-arrow">
-                                <span class="micon dw dw-invoice"></span><span class="mtext">Notification</span>
+                                <span class="micon dw dw-invoice"></span><span class="mtext">Thông báo</span>
                             </a>
                         </li>
                     }

@@ -15,8 +15,8 @@
                         </div>*@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Student">Student List</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Edit Student</li>
+                                <li class="breadcrumb-item"><a asp-page="Student">Quản lý sinh viên</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                             </ol>
                         </nav>
                     </div>
@@ -26,27 +26,27 @@
             <div class="pd-20 card-box mb-30">
                 <form method="post">
                     <div class="form-group row">
-                        <label asp-for="Student.Id" class="col-sm-12 col-md-2 col-form-label">Department Name</label>
+                        <label asp-for="Student.Id" class="col-sm-12 col-md-2 col-form-label">Khoa</label>
                         <div class="col-sm-12 col-md-10">
                             <input asp-for="Student.Id" class="form-control" type="hidden">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.StudentName" class="col-sm-12 col-md-2 col-form-label">Student Name</label>
+                        <label asp-for="Student.StudentName" class="col-sm-12 col-md-2 col-form-label">Tên sinh viên</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Student.StudentName" class="form-control" type="text" placeholder="Student name" required="required">
+                            <input asp-for="Student.StudentName" class="form-control" type="text" placeholder="Tên sinh viên" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.StudentCode" class="col-sm-12 col-md-2 col-form-label">Student Code</label>
+                        <label asp-for="Student.StudentCode" class="col-sm-12 col-md-2 col-form-label">Mã sinh viên</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Student.StudentCode" class="form-control" type="text" placeholder="Student code" required="required">
+                            <input asp-for="Student.StudentCode" class="form-control" type="text" placeholder="Mã sinh viên" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.InSemester" class="col-sm-12 col-md-2 col-form-label">Semester</label>
+                        <label asp-for="Student.InSemester" class="col-sm-12 col-md-2 col-form-label">Học kỳ</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Student.InSemester" class="form-control" type="number" placeholder="Semester" required="required">
+                            <input asp-for="Student.InSemester" class="form-control" type="number" placeholder="Học kỳ" required="required">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -56,36 +56,36 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.Address" class="col-sm-12 col-md-2 col-form-label">Address</label>
+                        <label asp-for="Student.Address" class="col-sm-12 col-md-2 col-form-label">Địa chỉ</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Student.Address" class="form-control" type="text" placeholder="Address">
+                            <input asp-for="Student.Address" class="form-control" type="text" placeholder="Địa chỉ">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.Phone" class="col-sm-12 col-md-2 col-form-label">Phone Number</label>
+                        <label asp-for="Student.Phone" class="col-sm-12 col-md-2 col-form-label">SĐT</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Student.Phone" class="form-control" type="number" placeholder="Phone">
+                            <input asp-for="Student.Phone" class="form-control" type="number" placeholder="SĐT">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.Gender" class="col-sm-12 col-md-2 col-form-label">Gender</label>
+                        <label asp-for="Student.Gender" class="col-sm-12 col-md-2 col-form-label">Giới tính</label>
                         <div class="col-sm-12 col-md-10">
                             <select asp-for="Student.Gender" class="custom-select col-12">
-                                <option selected="">Choose...</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
+                                <option selected="">Chọn...</option>
+                                <option value="Male">Nam</option>
+                                <option value="Female">Nữ</option>
+                                <option value="Other">Khác</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label asp-for="Student.DOB" class="col-sm-12 col-md-2 col-form-label">DOB</label>
+                        <label asp-for="Student.DOB" class="col-sm-12 col-md-2 col-form-label">Ngày sinh</label>
                         <div class="col-sm-12 col-md-10">
-                            <input asp-for="Student.DOB" class="form-control date-picker" type="text" placeholder="DOB">
+                            <input asp-for="Student.DOB" class="form-control date-picker" type="text" placeholder="Ngày sinh">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Class</label>
+                        <label>Lớp học</label>
                         <select asp-for="Student.ClassRoomId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
                             @foreach (var item in Model.listClass)
                             {
@@ -94,18 +94,18 @@
                         </select>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Status</label>
+                        <label class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                         <div class="col-sm-12 col-md-10">
                             <select asp-for="Student.Status" class="custom-select col-12">
-                                <option selected="">Choose...</option>
+                                <option selected="">Chọn...</option>
                                 <option value="true">Hoạt động</option>
                                 <option value="false">Không hoạt động</option>
                             </select>
                         </div>
                     </div>
                     <div class="btn-list">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a asp-page="Student" type="submit" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                        <a asp-page="Student" type="submit" class="btn btn-danger">Xóa</a>
                     </div>
                 </form>
             </div>
