@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Student List</h4>
+                            <h4>Quản lý sinh viên</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -27,7 +27,7 @@
                     </div>
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
-                        <div class="col-md-5 col-sm-12 d-flex flex-row">
+                        <div class="col-md-6 col-sm-12 d-flex flex-row">
                             <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddStudent">
@@ -42,14 +42,14 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-sm-12 text-right">
+                            <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-page="ExportStudent">
                                         Xuất file
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-sm-12 text-right">
+                            <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-success" onclick="chooseFile()">
                                         Nhập file

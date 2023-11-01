@@ -13,14 +13,14 @@
                     <div class="col-md-6 col-sm-12">
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="Department">Department List</a></li>
+                                <li class="breadcrumb-item"><a href="Department">Quản lý khoa</a></li>
                                 @if (User.IsInRole(RoleConstant.ADMIN))
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Edit Department</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                                 else
                                 {
-                                    <li class="breadcrumb-item active" aria-current="page">Detail</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Chi tiết</li>
                                 }
                             </ol>
                         </nav>
@@ -36,30 +36,30 @@
                             <input asp-for="Department.Id" class="form-control" type="hidden">
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Department.DepartmentName" class="col-sm-12 col-md-2 col-form-label">Department Name</label>
+                            <label asp-for="Department.DepartmentName" class="col-sm-12 col-md-2 col-form-label">Tên khoa</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Department.DepartmentName" class="form-control" type="text" placeholder="Department name">
+                                <input asp-for="Department.DepartmentName" class="form-control" type="text" placeholder="Tên khoa">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Department.DepartmentCode" class="col-sm-12 col-md-2 col-form-label">Department Code</label>
+                            <label asp-for="Department.DepartmentCode" class="col-sm-12 col-md-2 col-form-label">Mã khoa</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Department.DepartmentCode" class="form-control" type="text" placeholder="Department code">
+                                <input asp-for="Department.DepartmentCode" class="form-control" type="text" placeholder="Mã khoa">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Department.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                            <label asp-for="Department.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                             <div class="col-sm-12 col-md-10">
                                 <select asp-for="Department.Status" class="custom-select col-12">
-                                    <option selected="">Choose...</option>
+                                    <option selected="">Chọn...</option>
                                     <option value="true">Hoạt động</option>
                                     <option value="false">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                         <div class="btn-list">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a asp-page="Department" type="submit" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                            <a asp-page="Department" type="submit" class="btn btn-danger">Hủy</a>
                         </div>
                     </form>
                 </div>
@@ -69,35 +69,35 @@
                 <div class="pd-20 card-box mb-30">
                     <form method="post">
                         <div class="form-group row">
-                            <label asp-for="Department.Id" class="col-sm-12 col-md-2 col-form-label">Department Name</label>
+                            <label asp-for="Department.Id" class="col-sm-12 col-md-2 col-form-label">Tên khoa</label>
                             <div class="col-sm-12 col-md-10">
                                 <input asp-for="Department.Id" class="form-control" type="hidden">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Department.DepartmentName" class="col-sm-12 col-md-2 col-form-label">Department Name</label>
+                            <label asp-for="Department.DepartmentName" class="col-sm-12 col-md-2 col-form-label">Tên khoa</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Department.DepartmentName" class="form-control" type="text" placeholder="Department name" readonly="readonly">
+                                <input asp-for="Department.DepartmentName" class="form-control" type="text" placeholder="Tên khoa" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Department.DepartmentCode" class="col-sm-12 col-md-2 col-form-label">Department Code</label>
+                            <label asp-for="Department.DepartmentCode" class="col-sm-12 col-md-2 col-form-label">Mã khoa</label>
                             <div class="col-sm-12 col-md-10">
-                                <input asp-for="Department.DepartmentCode" class="form-control" type="text" placeholder="Department code" readonly="readonly">
+                                <input asp-for="Department.DepartmentCode" class="form-control" type="text" placeholder="Mã khoa" readonly="readonly">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label asp-for="Department.Status" class="col-sm-12 col-md-2 col-form-label">Status</label>
+                            <label asp-for="Department.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
                             <div class="col-sm-12 col-md-10">
                                 <select asp-for="Department.Status" class="custom-select col-12" disabled="disabled">
-                                    <option selected="">Choose...</option>
+                                    <option selected="">Chọn...</option>
                                     <option value="true">Hoạt động</option>
                                     <option value="false">Không hoạt động</option>
                                 </select>
                             </div>
                         </div>
                         <div class="btn-list">
-                            <a asp-page="Department" type="submit" class="btn btn-primary">Back</a>
+                            <a asp-page="Department" type="submit" class="btn btn-primary">Quay lại</a>
                         </div>
                     </form>
                 </div>

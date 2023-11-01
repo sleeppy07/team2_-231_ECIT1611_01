@@ -12,12 +12,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Point List</h4>
+                            <h4>Quản lý điểm</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a asp-page="Index">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Mark report</li>
+                                <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Quản lý điểm</li>
                             </ol>
                         </nav>
                     </div>
@@ -28,7 +28,7 @@
                             <div class="col-md-4 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddPoint">
-                                        Add Point
+                                        Thêm mới
                                     </a>
                                 </div>
                             </div>
@@ -37,8 +37,8 @@
                         {
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
-                                    <a id="deleteButton" class="btn btn-danger disabled">
-                                        Delete
+                                    <a id="deleteButton" class="btn btn-danger disabled" style="color:white">
+                                        Xóa
                                     </a>
                                 </div>
                             </div>
@@ -46,20 +46,20 @@
                         }
                         @if (User.IsInRole(RoleConstant.ADMIN) || User.IsInRole(RoleConstant.TEACHER) || User.IsInRole(RoleConstant.STUDENT))
                         {
-                            <div class="col-md-2 col-sm-12 text-left">
+                            <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-route-classId="@Model.ClassId" asp-page="ExportPoint">
-                                        Export
+                                        Xuất file
                                     </a>
                                 </div>
                             </div>
                         }
                         @if (User.IsInRole(RoleConstant.ADMIN))
                         {
-                            <div class="col-md-2 col-sm-12 text-left">
+                            <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-success" onclick="chooseFile()">
-                                        Import
+                                        Nhập file
                                     </a>
                                     <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportPoint" style="display: none;">
                                         <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
@@ -82,7 +82,7 @@
                                 <i style="justify-content: flex-start;"
                                    class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                 <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
-                                       class="form-control search-input" placeholder="Search Here">
+                                       class="form-control search-input" placeholder="Tìm kiếm">
                             </div>
                             @*</form>*@
                         </div>
@@ -92,17 +92,17 @@
                             @*<form method="get">*@
                             <div class="form-group mb-0" style="display:flex">
                                 <input asp-for="Semester" style="justify-content: flex-end;" type="number"
-                                       class="form-control search-input" placeholder="Semester">
+                                       class="form-control search-input" placeholder="Học kỳ">
                             </div>
                             @*</form>*@
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div style="display: flex;">
-                            <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Subject</p>
+                            <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Môn học</p>
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="SubjectId" class="custom-select">
-                                    <option value="null">All</option>
+                                    <option value="null">Tất cả</option>
                                     @foreach (var item in Model.ListSubject)
                                     {
                                         <option value="@item.Id">@item.SubjectName</option>
@@ -115,10 +115,10 @@
                     {
                         <div class="col-md-3">
                             <div style="display: flex;">
-                                <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Class</p>
+                                <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Lớp học</p>
                                 <div style="justify-content: flex-end; width: 200px;">
                                     <select asp-for="ClassId" class="custom-select">
-                                        <option value="null">All</option>
+                                        <option value="null">Tất cả</option>
                                         @foreach (var item in Model.ListClassRoom)
                                         {
                                             <option value="@item.Id">@item.ClassName</option>
@@ -132,10 +132,10 @@
                     {
                         <div class="col-md-3">
                             <div style="display: flex;">
-                                <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Student</p>
+                                <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Sinh viên</p>
                                 <div style="justify-content: flex-end; width: 200px;">
                                     <select asp-for="StudentId" class="custom-select">
-                                        <option value="null">All</option>
+                                        <option value="null">Tất cả</option>
                                         @foreach (var item in Model.ListStudent)
                                         {
                                             <option value="@item.Id">@item.StudentName</option>
@@ -146,7 +146,7 @@
                         </div>
                     }
 
-                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Filter</button>
+                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
                 </div>
             </form>
             <div class="table-responsive">
@@ -154,18 +154,18 @@
                     <thead style="background-color: lightgray">
                         <tr>
                             <th>#</th>
-                            <th>Student Name</th>
-                            <th>Student Code</th>
-                            <th>Subject Name</th>
-                            <th>Subject Code</th>
-                            <th>Semester</th>
-                            <th>Progress Point</th>
-                            <th>Midterm Point</th>
-                            <th>Final Point</th>
-                            <th>Result</th>
-                            <th>Created Date</th>
-                            <th>Last Modified Date</th>
-                            <th>Action</th>
+                            <th>Tên sinh viên</th>
+                            <th>Mã sinh viên</th>
+                            <th>Môn học</th>
+                            <th>Mã môn học</th>
+                            <th>Học kỳ</th>
+                            <th>Điểm quá trình</th>
+                            <th>Điểm thảo luận</th>
+                            <th>Điểm tổng kết</th>
+                            <th>Kết quả</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày cập nhật</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -183,7 +183,7 @@
                                 <td>@item.ProgessPoint</td>
                                 <td>@item.MidtermPoint</td>
                                 <td>@item.FinalPoint</td>
-                                <td class="@(item.IsPassed == true ? "text-success" : "text-danger")">@(item.IsPassed == true ? "Passed" : "Not Passed")</td>
+                                <td class="@(item.IsPassed == true ? "text-success" : "text-danger")">@(item.IsPassed == true ? "Qua môn" : "Trượt")</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
                                 <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
                                 <td>
@@ -194,14 +194,14 @@
                                         @if (User.IsInRole(RoleConstant.ADMIN))
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Edit</a>
-                                                <a class="dropdown-item" asp-page="DeletePoint" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Delete</a>
+                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Chi tiết</a>
+                                                <a class="dropdown-item" asp-page="DeletePoint" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Xóa</a>
                                             </div>
                                         }
                                         else
                                         {
                                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> View</a>
+                                                <a class="dropdown-item" asp-page="UpdatePoint" asp-route-id="@item.Id"><i class="dw dw-edit2"></i> Chi tiết</a>
                                             </div>
                                         }
                                     </div>
@@ -227,7 +227,7 @@
                     <p class="text-danger" style="font-style:italic">@ViewData["mess"]</p>
                 </div>
             }
-            <div class="row">
+            <div class="row-page">
                 <div class="btn-group mb-15" style="margin-left:15px;">
                     <a class="btn btn-light @prev" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex-1)"
                        asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Previous</a>
@@ -250,13 +250,13 @@
     function confirmDelete(event) {
         event.preventDefault(); // prevent the default action of the button click
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'Bạn chắc chắn muốn xóa chứ?',
+            text: "Hành động này không thể hồi phục lại dữ liệu đã xóa.",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#d33',
             cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Chắc chắn'
         }).then((result) => {
             if (result.isConfirmed) {
                 // if the user clicks the confirm button, continue with the delete action
@@ -289,7 +289,7 @@
             }
         });
 
-        if (checkedCount >= 2) {
+        if (checkedCount > 0) {
             deleteButton.classList.remove('disabled');
         } else {
             deleteButton.classList.add('disabled');
