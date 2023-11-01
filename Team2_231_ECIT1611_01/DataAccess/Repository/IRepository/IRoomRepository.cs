@@ -11,7 +11,7 @@ namespace DataAccess.Repository.IRepository
         Task DeleteList(List<string> id, CancellationToken cancellationToken = default);
         Task<ClassRoom> GetById(Guid id);
         Task<Guid> GetIdByCode (string? code);
-        Task<List<ClassRoom>> GetAll();
+        Task<List<ClassRoom>> GetAll(string? UserId);
         Task<PagedList<ClassRoom>> Search(string? keyword, bool? status,string? tid, int page, int pagesize);
         Task<PagedList<ClassRoom>> SearchClassByStudent(string? keyword, bool? status,Guid? sid, int page, int pagesize);
         Task<List<Student>> ListStudentByClass(Guid sid);

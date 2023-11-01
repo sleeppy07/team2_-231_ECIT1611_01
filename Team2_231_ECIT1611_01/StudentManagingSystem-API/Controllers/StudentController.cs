@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using OfficeOpenXml.Style;
 using OfficeOpenXml;
 using StudentManagingSystem_API.DTO;
+using System.Security.Claims;
 
 namespace StudentManagingSystem_API.Controllers
 {
@@ -32,6 +33,19 @@ namespace StudentManagingSystem_API.Controllers
             _mapper = mapper;
             _userManager = userManager;
             _configuration = configuration;
+        }
+
+        private string? GetNameFromConext()
+        {
+            return User.FindFirstValue(ClaimTypes.Name);
+        }
+        private string GetUserRoleFromContext()
+        {
+            return User.FindFirstValue(ClaimTypes.Role);
+        }
+        private string GetUserIdFromContext()
+        {
+            return User.FindFirstValue(ClaimTypes.Sid);
         }
 
         [Authorize(Roles = RoleConstant.ADMIN)]
@@ -159,7 +173,13 @@ namespace StudentManagingSystem_API.Controllers
         {
             try
             {
-                var res = await _repository.GetAll(rq.keyword, rq.status, rq.page, rq.pagesize);
+                var userId = GetUserIdFromContext();
+                var userRole = GetUserRoleFromContext();
+                if (User.IsInRole(RoleConstant.ADMIN))
+                {
+                    userId = string.Empty;
+                }
+                var res = await _repository.GetAll(rq.keyword, rq.status, userId, rq.page, rq.pagesize);
                 return Ok(res);
             }
             catch (Exception ex)
@@ -234,7 +254,7 @@ namespace StudentManagingSystem_API.Controllers
             }
         }
 
-        [Authorize(Roles = RoleConstant.ADMIN + "," + RoleConstant.TEACHER)]
+        [Authorize(Roles = RoleConstant.ADMIN)]
         [HttpPost("Export")]
         public async Task<IActionResult> ExportFile(StudentSearchRequest rq)
         {
@@ -242,7 +262,7 @@ namespace StudentManagingSystem_API.Controllers
             {
                 //var request = new List<Guid>();
                 List<Guid>? request;
-                var rp2 = await _repository.GetAll(rq.keyword, rq.status, rq.page, rq.pagesize);
+                var rp2 = await _repository.GetAll(rq.keyword, rq.status, string.Empty,rq.page, rq.pagesize);
                 request = rp2.Data.Select(i => i.Id).ToList();
 
                 ExcelPackage.LicenseContext = LicenseContext.Commercial;

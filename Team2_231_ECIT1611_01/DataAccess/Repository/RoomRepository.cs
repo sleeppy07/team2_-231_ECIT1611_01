@@ -59,9 +59,13 @@ namespace DataAccess.Repository
             await _context.SaveChangesAsync(cancellationToken);
         }
 
-        public async Task<List<ClassRoom>> GetAll()
+        public async Task<List<ClassRoom>> GetAll(string? UserId)
         {
             var list = await _context.ClassRooms.Where(i => i.Status == true).OrderByDescending(i => i.CreatedDate).ToListAsync();
+            if(!string.IsNullOrEmpty(UserId))
+            {
+                list = list.Where(m => m.UserId == UserId).ToList();
+            }
             return list;
         }
 
