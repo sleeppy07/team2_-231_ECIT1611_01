@@ -17,7 +17,11 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
+<<<<<<< HEAD
+                                <li class="breadcrumb-item active" aria-current="page">Điểm</li>
+=======
                                 <li class="breadcrumb-item active" aria-current="page">Quản lý điểm</li>
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             </ol>
                         </nav>
                     </div>
@@ -37,7 +41,11 @@
                         {
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
+<<<<<<< HEAD
+                                    <a id="deleteButton" class="btn btn-danger disabled">
+=======
                                     <a id="deleteButton" class="btn btn-danger disabled" style="color:white">
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                         Xóa
                                     </a>
                                 </div>
@@ -49,7 +57,11 @@
                             <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-route-classId="@Model.ClassId" asp-page="ExportPoint">
+<<<<<<< HEAD
+                                        Xuất
+=======
                                         Xuất file
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                     </a>
                                 </div>
                             </div>
@@ -59,11 +71,15 @@
                             <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-success" onclick="chooseFile()">
+<<<<<<< HEAD
+                                        Nhập
+=======
                                         Nhập file
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                     </a>
                                     <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportPoint" style="display: none;">
                                         <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
-                                        <button id="submitBtn" type="submit">Submit</button>
+                                        <button id="submitBtn" type="submit">Xác nhận</button>
                                     </form>
                                 </div>
                             </div>
@@ -78,28 +94,40 @@
                     <div class="col-md-3">
                         <div class="header-search">
                             @*<form method="get">*@
-                            <div class="form-group mb-0" style="display:flex">
+                            <div class="form-group mb-15" style="display:flex">
                                 <i style="justify-content: flex-start;"
                                    class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                 <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
+<<<<<<< HEAD
+                                       class="form-control search-input" placeholder="Nội dung tìm kiếm">
+=======
                                        class="form-control search-input" placeholder="Tìm kiếm">
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             </div>
                             @*</form>*@
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-1">
                         <div class="header-search">
                             @*<form method="get">*@
                             <div class="form-group mb-0" style="display:flex">
                                 <input asp-for="Semester" style="justify-content: flex-end;" type="number"
+<<<<<<< HEAD
+                                       class="form-control search-input" placeholder="Học kì">
+=======
                                        class="form-control search-input" placeholder="Học kỳ">
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             </div>
                             @*</form>*@
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div style="display: flex;">
+<<<<<<< HEAD
+                            <p style="justify-content: flex-start; margin-top:9px white-space: nowrap" class="mr-10">Môn học</p>
+=======
                             <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Môn học</p>
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="SubjectId" class="custom-select">
                                     <option value="null">Tất cả</option>
@@ -115,7 +143,11 @@
                     {
                         <div class="col-md-3">
                             <div style="display: flex;">
+<<<<<<< HEAD
+                                <p style="justify-content: flex-start; margin-top:9px" class="mr-10">Lớp học</p>
+=======
                                 <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Lớp học</p>
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                 <div style="justify-content: flex-end; width: 200px;">
                                     <select asp-for="ClassId" class="custom-select">
                                         <option value="null">Tất cả</option>
@@ -155,6 +187,18 @@
                         <tr>
                             <th>#</th>
                             <th>Tên sinh viên</th>
+<<<<<<< HEAD
+                            <th>MSV</th>
+                            <th>Tên môn</th>
+                            <th>Mã môn</th>
+                            <th>Học kỳ</th>
+                            <th>ĐCC</th>
+                            <th>Điểm KT</th>
+                            <th>ĐIểm cuối kì</th>
+                            <th>Kết quả</th>
+                            <th>Ngày tạo</th>
+                            <th>Ngày chỉnh sửa</th>
+=======
                             <th>Mã sinh viên</th>
                             <th>Môn học</th>
                             <th>Mã môn học</th>
@@ -165,6 +209,7 @@
                             <th>Kết quả</th>
                             <th>Ngày tạo</th>
                             <th>Ngày cập nhật</th>
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             <th>Hành động</th>
                         </tr>
                     </thead>
@@ -227,16 +272,20 @@
                     <p class="text-danger" style="font-style:italic">@ViewData["mess"]</p>
                 </div>
             }
+<<<<<<< HEAD
+            <div class="row-number">
+=======
             <div class="row-page">
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                 <div class="btn-group mb-15" style="margin-left:15px;">
                     <a class="btn btn-light @prev" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex-1)"
-                       asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Previous</a>
+                       asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
                     {
                         <a class="btn @(i == Model.PageIndex ? "btn-success" : "btn-light")" asp-page="./Point" asp-route-pageIndex="@i"
                        asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">@i</a>
                     }
-                    <a class="btn btn-light @next" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex+1)" asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Next</a>
+                    <a class="btn btn-light @next" asp-page="./Point" asp-route-pageIndex="@(Model.PageIndex+1)" asp-route-keyword="@(Model.Keyword)" asp-route-semester="@(Model.Semester)" asp-route-studentId="@(Model.StudentId)" asp-route-subjectId="@(Model.SubjectId)" asp-route-classId="@(Model.ClassId)">Trước</a>
                 </div>
             </div>
         </div>

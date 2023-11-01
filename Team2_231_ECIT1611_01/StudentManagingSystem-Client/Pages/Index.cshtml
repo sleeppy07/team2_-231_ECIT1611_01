@@ -32,7 +32,11 @@
                                     @item.Content
                                     <br>
                                     <br>
+<<<<<<< HEAD
+                                    <a class="btn btn-info btn-chitiet" style="color:white" data-toggle="modal" data-target="@("#detail-" + item.Id)" data-url="@Url.Action($"Details/{item.Id}")">Chi tiết</a>
+=======
                                     <a class="btn btn-info" style="color:white" data-toggle="modal" data-target="@("#detail-" + item.Id)" data-url="@Url.Action($"Details/{item.Id}")">Chi tiết</a>
+>>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                     @await Html.PartialAsync("_NotificationPartial", item)
                                 </div>
                             </div>

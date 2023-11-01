@@ -28,10 +28,11 @@
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <div class="col-md-6 col-sm-12 d-flex flex-row">
-                            <div class="col-md-3 col-sm-12 text-right">
+                            <div class="col-md-4 col-sm-12 text-right">
+
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddTeacher">
-                                        Thêm mới
+                                        Thêm giảng viên
                                     </a>
                                 </div>
                             </div>
@@ -42,7 +43,9 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-sm-12 text-right">
+                        </div>
+                            @*<div class="col-md-2 col-sm-12 text-left">
+
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-page="ExportTeacher">
                                         Xuất file
@@ -59,8 +62,7 @@
                                         <button id="submitBtn" type="submit">Xác nhận</button>
                                     </form>
                                 </div>
-                            </div>
-                        </div>
+                            </div>*@
                     }
                 </div>
             </div>
@@ -79,8 +81,9 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <div style="display: flex;">
-                            <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Trạng thái</p>
+                        <div class="flex">
+                            <p style="justify-content: flex-start; margin-top:9px; white-space: nowrap" class="mr-10">Trạng thái</p>
+
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="Status" class="custom-select">
                                     <option selected="" value="null">Tất cả</option>
@@ -91,6 +94,26 @@
                         </div>
                     </div>
                     <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
+                <div class="row-page btn-file">
+                    <div class="col-md-2 col-sm-12 text-left">
+                        <div class="dropdown">
+                            <a class="btn btn-outline-danger" asp-page="ExportTeacher">
+                                Xuất
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-12 text-left">
+                        <div class="dropdown">
+                            <a class="btn btn-outline-success" onclick="chooseFile()">
+                                Nhập
+                            </a>
+                            <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportTeacher" style="display: none;">
+                                <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
+                                <button id="submitBtn" type="submit">Xác nhận</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                     @*<div class="col-md-3">
                     <div style="display: flex;">
                     <p style="justify-content: flex-start;margin-top:9px" class="mr-10">Status</p>
@@ -158,8 +181,8 @@
                 var prev = Model.PageIndex > 1 ? "" : "disabled";
                 var next = Model.PageIndex < Model.TotalPage ? "" : "disabled";
             }
-            <div class="row-page">
-                <div class="btn-group mb-15" style="margin-left:15px;">
+            <div class="row-number">
+                <div class="btn-group mb-15"">
                     <a class="btn btn-light @prev" asp-page="./Teacher" asp-route-pageIndex="@(Model.PageIndex-1)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
                     {
