@@ -244,6 +244,7 @@ namespace StudentManagingSystem_API.DTO
         public Guid? subjectId { get; set; }
         public Guid? studentId { get; set; }
         public Guid? classId { get; set; }
+        public bool? IsPassed { get; set; }
         public int page { get; set; }
         public int pagesize { get; set; }
     }

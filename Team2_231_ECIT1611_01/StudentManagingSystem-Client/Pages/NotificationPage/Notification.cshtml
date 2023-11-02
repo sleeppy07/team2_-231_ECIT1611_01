@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" style="white-space:nowrap">
                 <table class="table table-striped table-bordered ">
                     <thead style="background-color: lightgray">
                         <tr>
@@ -76,7 +76,7 @@
                 var prev = Model.PageIndex > 1 ? "" : "disabled";
                 var next = Model.PageIndex < Model.TotalPage ? "" : "disabled";
             }
-            <div class="row-page">
+            <div class="row-number" style="display: flex;justify-content: end">
                 <div class="btn-group mb-15" style="margin-left:15px;">
                     <a class="btn btn-light @prev" asp-page="./Notification" asp-route-pageIndex="@(Model.PageIndex-1)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
