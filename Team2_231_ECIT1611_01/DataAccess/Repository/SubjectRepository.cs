@@ -98,18 +98,10 @@ namespace DataAccess.Repository
 
         public async Task<PagedList<Subject>> Search(string? keyword, bool? status, int? semester, string? UserId, int page, int pagesize)
         {
-            var ListSubject = new List<Guid>();
+            var query = _context.Subjects.AsQueryable();
             if(!string.IsNullOrEmpty(UserId))
             {
-                //var QuerySubject = await _context.SubjectDetails.Where(m => m.UserId == UserId).Select(m => (Guid)m.SubjectId).ToListAsync();
-                //QuerySubject = ListSubject;
-            }
-
-            var query = _context.Subjects.AsQueryable();
-
-            if(ListSubject.Count() > 0)
-            {
-                query = query.Where(m => ListSubject.Contains((Guid)m.Id));
+                query = query.Where(m => m.UserId == UserId);
             }
 
             if (!string.IsNullOrEmpty(keyword))
@@ -161,15 +153,14 @@ namespace DataAccess.Repository
             {
                 query = query.Where(i => i.Subject.Semester == semester);
             }
-            var query1 = query.Include(i => i.Subject).ThenInclude(m => m.User).OrderByDescending(c => c.CreatedDate);
-            var query2 = await query1.Skip((page - 1) * pagesize)
-                .Take(pagesize).ToListAsync();
-            var res = await query1.ToListAsync();
+            var query1 = query.Include(i => i.Subject).ThenInclude(m => m.User).OrderByDescending(c => c.CreatedDate).ToList();
+            var query2 =  query1.Skip((page - 1) * pagesize)
+                        .Take(pagesize).ToList();
             listSub = query2.Select(i => i.Subject).ToList();
             return new PagedList<Subject>
             {
                 Data = listSub,
-                TotalCount = res.Count
+                TotalCount = query1.Count
             };
         }
 
