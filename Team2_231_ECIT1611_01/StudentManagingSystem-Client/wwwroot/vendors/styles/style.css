@@ -35,7 +35,7 @@ body {
     font-weight: 400;
     min-height: 100%;
     color: #031e23;
-    background: #ecf0f4
+    /*background: #ecf0f4*/
 }
 
 a {
@@ -1282,6 +1282,7 @@ table.dataTable>tbody>tr.child ul.dtr-details .dtr-title {
     border-bottom: 6px;
     padding-left: 1rem;
     background-color: white;
+    padding: 1.5rem;
 }
 thead{
     text-align: left;
@@ -1300,6 +1301,21 @@ thead.table-thead{
     font-weight: 500;
     padding: 1rem
 }
+
+.table tbody .status-active {
+    color: green !important;
+}
+
+.table tbody .status-inactive {
+    color: red !important;
+}
+
+.table-plus {
+    color: #4F378B
+}
+
+
+
 
 .table-striped tbody tr:nth-of-type(odd) {
     background: #eaeef2
@@ -3485,6 +3501,10 @@ body.IE .register-page-wrap .container {
     color: #1b00ff;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out
+}
+
+.btn-add {
+    background: #4F378C;
 }
 
 .faq-wrap .card-header .btn.collapsed {

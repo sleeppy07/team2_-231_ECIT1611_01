@@ -7,7 +7,9 @@
 <div class="mobile-menu-overlay"></div>
 
 <div class="main-container">
-    <div class="pd-ltr-20 xs-pd-20-10">
+    <div 
+        class="pd-ltr-20 xs-pd-20-10"
+    >
         <div class="min-height-200px">
             <div class="page-header">
                 <div class="row">
@@ -27,7 +29,8 @@
                         <div class="col-md-6 col-sm-12 d-flex flex-row">
                             <div class="col-md-4 col-sm-12 text-right">
                                 <div class="dropdown">
-                                    <a class="btn btn-primary" asp-page="AddDepartment">
+                                    <a class="btn btn-primary btn-add" asp-page="AddDepartment">
+                                        <i class="fa-solid fa-plus"></i>
                                         Thêm mới
                                     </a>
                                 </div>
@@ -131,7 +134,16 @@
                                 </td>
                                 <td class="table-plus">@item.DepartmentName</td>
                                 <td>@item.DepartmentCode</td>
-                                <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
+                                @if (item.Status == true)
+                                {
+                                    <td class="status-active">Hoạt động</td>
+                                }
+                                else
+                                {
+                                    <td class="status-inactive">Không hoạt động</td>
+                                }
+
+                                @* <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td> *@
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
                                 <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
                                 <td>

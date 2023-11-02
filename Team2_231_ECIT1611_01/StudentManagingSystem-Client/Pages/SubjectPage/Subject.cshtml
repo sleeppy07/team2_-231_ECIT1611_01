@@ -131,7 +131,15 @@
                                 <td class="table-plus">@item.SubjectName</td>
                                 <td>@item.SubjectCode</td>
                                 <td>@(item.User is null ? string.Empty : item.User.FullName)</td>
-                                <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
+                                @* <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td> *@
+                                @if (item.Status == true)
+                                {
+                                    <td class="status-active">Hoạt động</td>
+                                }
+                                else
+                                {
+                                    <td class="status-inactive">Không hoạt động</td>
+                                }
                                 <td>@item.Description</td>
                                 <td>@item.Semester</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
