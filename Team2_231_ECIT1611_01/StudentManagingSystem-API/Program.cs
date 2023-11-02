@@ -8,6 +8,8 @@ using Microsoft.OpenApi.Models;
 using StudentManagingSystem_API.Configuration;
 using StudentManagingSystem_API.Extensions;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +49,13 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 });
+
+//builder.Services.AddMvc()
+//    .AddJsonOptions(options =>
+//    {
+//        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+//        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+//    });
 
 builder.Services.AddSwaggerGen(options =>
 {

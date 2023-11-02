@@ -51,7 +51,7 @@ namespace StudentManagingSystem_Client.Pages.SubjectPage
                     studentId = Guid.Parse(userid)
                     
                 };
-                ListSubject = await client.PostSearch<PagedList<Subject>>("/api/Subject/search", requestModel);
+                ListSubject = await client.PostSearch<PagedList<Subject>>("/api/Subject/searchByStudent", requestModel);
                 if (ListSubject == null || ListSubject.Data.Count() == 0)
                 {
                     ListSubject = new PagedList<Subject>();
