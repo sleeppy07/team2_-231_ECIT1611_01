@@ -13,20 +13,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-<<<<<<< HEAD
-                            <h4>Quản Lý Khoa</h4>
-=======
                             <h4>Quản lý khoa</h4>
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-page="Index">Trang chủ</a></li>
-<<<<<<< HEAD
-                                <li class="breadcrumb-item active" aria-current="page">Khoa</li>
-=======
                                 <li class="breadcrumb-item active" aria-current="page">Quản lý khoa</li>
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             </ol>
                         </nav>
                     </div>
@@ -36,28 +28,17 @@
                             <div class="col-md-4 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-primary" asp-page="AddDepartment">
-<<<<<<< HEAD
-                                        Thêm khoa
-=======
                                         Thêm mới
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                     </a>
                                 </div>
                             </div>
                             <div class="col-md-2 col-sm-12 text-right">
                                 <div class="dropdown">
-<<<<<<< HEAD
-                                    <a id="deleteButton" class="btn btn-danger disabled">
-=======
                                     <a id="deleteButton" class="btn btn-danger disabled" style="color:white">
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                                         Xóa
                                     </a>
                                 </div>
                             </div>
-<<<<<<< HEAD
-                            
-=======
                             <div class="col-md-3 col-sm-12 text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-outline-danger" asp-page="ExportDepartment">
@@ -76,7 +57,6 @@
                                     </form>
                                 </div>
                             </div>
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                         </div>
                     }
 
@@ -98,13 +78,8 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-<<<<<<< HEAD
-                        <div class="flex">
-                            <p style="justify-content: flex-start; margin-top:9px; white-space: nowrap;" class="mr-10">Trạng thái</p>
-=======
                         <div style="display: flex;">
                             <p style="justify-content: flex-start; margin-top:0px" class="mr-10">Trạng thái</p>
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             <div style="justify-content: flex-end; width: 200px;">
                                 <select asp-for="Status" class="custom-select">
                                     <option selected="" value="null">Tất cả</option>
@@ -114,32 +89,7 @@
                             </div>
                         </div>
                     </div>
-<<<<<<< HEAD
-                    
                     <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
-                    <div class="row-page btn-file">
-                        <div class="col-md-2 col-sm-12 text-left">
-                            <div class="dropdown">
-                                <a class="btn btn-outline-danger" asp-page="ExportDepartment">
-                                    Xuất
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-sm-12 text-left">
-                            <div class="dropdown">
-                                <a class="btn btn-outline-success" onclick="chooseFile()">
-                                    Nhập
-                                </a>
-                                <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportDepartment" style="display: none;">
-                                    <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
-                                    <button id="submitBtn" type="submit">Xác nhận</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-=======
-                    <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                     @*<div class="col-md-3">
                     <div style="display: flex;">
                     <p style="justify-content: flex-start;margin-top:9px" class="mr-10">Status</p>
@@ -165,11 +115,7 @@
                             <th>Mã khoa</th>
                             <th>Trạng thái</th>
                             <th>Ngày tạo</th>
-<<<<<<< HEAD
-                            <th>Ngày chỉnh sửa</th>
-=======
                             <th>Ngày cập nhật</th>
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                             <th>Hành động</th>
                         </tr>
                     </thead>
@@ -215,13 +161,8 @@
                 var prev = Model.PageIndex > 1 ? "" : "disabled";
                 var next = Model.PageIndex < Model.TotalPage ? "" : "disabled";
             }
-<<<<<<< HEAD
-            <div class="row-number">
-                <div class="btn-group mb-15">
-=======
             <div class="row-page">
                 <div class="btn-group mb-15" style="margin-left:15px;">
->>>>>>> 44d0c4a1d6a9736df6f2137cdca353d52ed8365f
                     <a class="btn btn-light @prev" asp-page="./Department" asp-route-pageIndex="@(Model.PageIndex-1)">Trước</a>
                     @for (int i = 1; i <= Model.TotalPage; i++)
                     {
