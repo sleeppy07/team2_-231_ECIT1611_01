@@ -52,23 +52,22 @@
                                 <input asp-for="ClassRoom.ClassCode" class="form-control" type="text" placeholder="Mã lớp">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Khoa</label>
-                            <select asp-for="ClassRoom.DepartmentId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
-                                @foreach (var item in Model.listDept)
-                                {
-                                    <option value="@item.Id">@item.DepartmentName</option>
-                                }
-                            </select>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Khoa</label>
+                            <div class="col-sm-12 col-md-10">
+                                <select asp-for="ClassRoom.DepartmentId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
+                                    @foreach (var item in Model.listDept)
+                                    {
+                                        <option value="@item.Id">@item.DepartmentName</option>
+                                    }
+                                </select>
+                            </div>
+                            
                         </div>
-                        <div class="form-group">
-                            <label>Giảng viên</label>
-                            <select asp-for="ClassRoom.UserId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
-                                @foreach (var item in Model.listUser)
-                                {
-                                    <option value="@item.Id">@item.FullName</option>
-                                }
-                            </select>
+                        <div class="form-group row">
+                            <label class="col-sm-12 col-md-2 col-form-label">Giảng viên</label>
+                            
+                            
                         </div>
                         <div class="form-group row">
                             <label asp-for="ClassRoom.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
