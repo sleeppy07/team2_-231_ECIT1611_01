@@ -131,7 +131,7 @@ namespace DataAccess.Repository
             };
         }
 
-        public async Task<PagedList<Point>> Search(string? keyword, int? semester, Guid? subId, Guid? stuId,Guid? cid, int page, int pagesize)
+        public async Task<PagedList<Point>> Search(string? keyword, int? semester, Guid? subId, Guid? stuId,Guid? cid, bool? IsPassed, int page, int pagesize)
         {
             var query = _context.Points.AsQueryable();
             if (!string.IsNullOrEmpty(keyword))
@@ -172,6 +172,12 @@ namespace DataAccess.Repository
             {
                 query = query.Where(i => i.Subject.Semester == semester);
             }
+
+            if(!string.IsNullOrEmpty(IsPassed.ToString()))
+            {
+                query = query.Where(i => i.IsPassed == IsPassed);
+            }
+
             var query1 = query.Include(i => i.Subject).Include(i => i.Student).OrderByDescending(c => c.CreatedDate);
             var query2 = await query1.Skip((page - 1) * pagesize)
                 .Take(pagesize).ToListAsync();

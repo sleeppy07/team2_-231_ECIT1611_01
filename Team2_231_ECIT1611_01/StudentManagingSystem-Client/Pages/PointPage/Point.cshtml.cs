@@ -20,6 +20,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
         public List<ClassRoomSearchResponse> ListClassRoom { get; set; }
         [BindProperty]
         public string? Keyword { get; set; }
+        public bool? IsPassed { get; set; }
         [BindProperty]
         public int? Semester { get; set; }
         public int PageIndex { get; set; } = 1;
@@ -30,7 +31,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
         public string? StudentId { get; set; }
         [BindProperty]
         public string? ClassId { get; set; }
-        public async Task<IActionResult> OnGetAsync(int? semester, string? keyword, Guid? studentId, Guid? subjectId, Guid? classId, int pageIndex, int pagesize)
+        public async Task<IActionResult> OnGetAsync(int? semester, string? keyword, Guid? studentId, Guid? subjectId, Guid? classId, bool? isPassed, int pageIndex, int pagesize)
         {
             try
             {
@@ -45,6 +46,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                     ListStudent = new List<Student>();
                     Semester = semester;
                     Keyword = keyword;
+                    IsPassed = isPassed;
                     if (pageIndex == 0) pageIndex = 1;
                     PageIndex = pageIndex;
                     pagesize = 5;
@@ -59,6 +61,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                         pagesize = pagesize,
                         studentId = Guid.Parse(userid),
                         subjectId = subjectId,
+                        IsPassed = isPassed
                     };
 
                     ListPoint = await client.PostSearch<PagedList<PointResponse>>("/api/Point/search", requestModel);
