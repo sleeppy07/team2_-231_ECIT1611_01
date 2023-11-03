@@ -1493,10 +1493,10 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 }
 
 .header {
-    margin-left: 20px;
+    /*margin-left: 20px;*/
     position: fixed;
     height: 70px;
-    width: calc(100% - 300px);
+    width: calc(100% - 295px);
     background: #fff;
     right: 0;
     top: 0;
@@ -1872,7 +1872,8 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
 }
 
 .left-side-bar {
-    margin:10px;
+    margin:15px 0px 15px 15px;
+    /*margin-right: 0px;*/
     border-radius: 20px;
     width: 280px;
     z-index: 1000;
