@@ -8,12 +8,12 @@
 
 <div class="main-container">
     <div 
-        class="pd-ltr-20 xs-pd-20-10"
+        @* class="pd-ltr-20 xs-pd-20-10" *@
     >
         <div class="min-height-200px">
             <div class="page-header">
                 <div class="row">
-                    <div class="col-md-6 col-sm-12">
+                    <div class="col-md-12 col-sm-12">
                         <div class="title">
                             <h4>Quản lý khoa</h4>
                         </div>
@@ -24,24 +24,54 @@
                             </ol>
                         </nav>
                     </div>
+
+                    <div class="col-md-10 mt-15">
+                        <form method="get">
+                            <div class="col-md-12 flex-left p-0">
+                                <div class="col-md-4 p-0">
+                                    <div class="header-search">
+                                        <form method="get">
+                                            <div class="form-group mb-0" style="display:flex">
+                                               @*  <i style="justify-content: flex-start;"
+                                                   class="dw dw-search2 search-icon mr-10 mt-15"></i> *@
+                                                <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
+                                                       class="form-control search-input" placeholder="Tìm kiếm">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="flex" style="display: flex;">
+                                        <p style="justify-content: flex-start; margin-top:9px; white-space: nowrap;" class="mr-10">Trạng thái</p>
+                                        <div style="justify-content: flex-end; width: 200px;">
+                                            <select asp-for="Status" class="custom-select">
+                                                <option selected="" value="null">Tất cả</option>
+                                                <option value="True">Hoạt động</option>
+                                                <option value="False">Không hoạt động</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+
+
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
-                        <div class="col-md-6 col-sm-12 d-flex flex-row">
-                            <div class="col-md-4 col-sm-12 text-right">
-                                <div class="dropdown">
-                                    <a class="btn btn-primary btn-add" asp-page="AddDepartment">
-                                        <i class="fa-solid fa-plus"></i>
+                        <div class="col-md-2 col-sm-12 mt-15 flex-right " style="direction: rtl">
+                            <a class="btn btn-primary btn-add" asp-page="AddDepartment">
+                                <div class="btn-container">
+                                    <div>
                                         Thêm mới
-                                    </a>
+                                    </div>
+                                    <i class="fa fa-light fa-plus"></i>
                                 </div>
-                            </div>
-                            <div class="col-md-2 col-sm-12 text-right">
-                                <div class="dropdown">
-                                    <a id="deleteButton" class="btn btn-danger disabled" style="color:white">
-                                        Xóa
-                                    </a>
-                                </div>
-                            </div>                
+                                       
+                            </a>
                         </div>
                     }
 
@@ -50,19 +80,19 @@
             </div>
             <form method="get">
                 <div class="row mb-15">
-                    <div class="col-md-4">
+                    <div class="col-md-8">
                         <div class="header-search">
                             <form method="get">
-                                <div class="form-group mb-0" style="display:flex">
+                                @* <div class="form-group mb-0" style="display:flex">
                                     <i style="justify-content: flex-start;"
                                        class="dw dw-search2 search-icon mr-10 mt-15"></i>
                                     <input asp-for="Keyword" style="justify-content: flex-end;" type="text"
                                            class="form-control search-input" placeholder="Tìm kiếm">
-                                </div>
+                                </div> *@
                             </form>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    @* <div class="col-md-3">
                         <div class="flex" style="display: flex;">
                             <p style="justify-content: flex-start; margin-top:9px; white-space: nowrap;" class="mr-10">Trạng thái</p>
                             <div style="justify-content: flex-end; width: 200px;">
@@ -76,15 +106,17 @@
                     </div>
                     
                     <button type="submit" style="height: 44px;margin-left: 20px;width: 114px;" class="btn btn-success">Tìm kiếm</button>
-                    <div class="row-page btn-file col-md-4" style="justify-content: end">
-                        <div class="col-md-3 col-sm-12 text-left" style="margin-right:15px">
+                     *@
+                    @* <div class="row-page btn-file col-md-4" style="justify-content: end"> *@
+                        
+                   @*      <div class="col-md-3 col-sm-12 text-left" style="margin-right:15px">
                             <div class="dropdown">
                                 <a class="btn btn-outline-danger" asp-page="ExportDepartment">
                                     Xuất
                                 </a>
                             </div>
-                        </div>
-                        <div class="col-md-3 col-sm-12 text-left" style="margin-right:15px">
+                        </div> *@
+                        @* <div class="col-md-3 col-sm-12 text-left" style="margin-right:15px">
                             <div class="dropdown">
                                 <a class="btn btn-outline-success" onclick="chooseFile()">
                                     Nhập
@@ -95,7 +127,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> *@
                     @*<div class="col-md-3">
                     <div style="display: flex;">
                     <p style="justify-content: flex-start;margin-top:9px" class="mr-10">Status</p>
@@ -186,8 +218,72 @@
                     <a class="btn btn-light @next" asp-page="./Department" asp-route-pageIndex="@(Model.PageIndex+1)">Sau</a>
                 </div>
             </div>
+            <div class="page-header"
+            
+            >
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="title">
+                            <p>Chọn tác vụ bạn muốn sử dụng <b>Xuất file</b>, <b>Nhập file</b> và <b>Xóa</b></p>
+                        </div>
+                        
+                    </div>
+
+               
+
+               
+                        <div class="col-md-4 col-sm-12 flex-right ">
+                            @if (User.IsInRole(RoleConstant.ADMIN))
+                            {
+                            <a class="btn btn-primary btn-add" style="margin-right: 15px" asp-page="ExportDepartment">
+                                <div class="btn-container" >
+                                        <div>
+                                            Xuất file
+                                        </div>
+                                        <i class="fa fa-light fa-download"></i>
+                                    </div>
+
+                                </a>
+                            }
+              
+
+                        @if (User.IsInRole(RoleConstant.ADMIN))
+                        {
+                            <a class="btn btn-add" style="color:white;  margin-right: 15px" onclick="chooseFile()">
+                                <div class="btn-container">
+                                    <div>
+                                        Nhập
+                                    </div>
+                                    <i class="fa fa-regular fa-upload"></i>
+                                </div>
+
+                            </a>
+                             <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportDepartment" style="display: none;">
+                                    <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
+                                    <button id="submitBtn" type="submit">Xác nhận</button>
+                                </form>
+                        }
+                        @if (User.IsInRole(RoleConstant.ADMIN))
+                        {
+                            <a id="deleteButton" class="btn btn-add btn-danger disabled" style="color:white" asp-page="AddDepartment">
+                                <div class="btn-container">
+                                    <div>
+                                        Xóa
+                                    </div>
+                                    <i class="fa fa-regular fa-trash"></i>
+                                </div>
+
+                            </a>
+                        }
+                        </div>
+                   
+
+
+                </div>
+            </div>
         </div>
     </div>
+    
 </div>
 @{
     var t = HttpContext.Request.Cookies["AccessToken"];
