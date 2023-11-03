@@ -3526,6 +3526,7 @@ body.IE .register-page-wrap .container {
 
 .btn-add {
     background: #4F378C;
+    min-width:150px;
 }
 
 .btn-add:hover {
