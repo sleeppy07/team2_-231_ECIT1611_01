@@ -224,9 +224,9 @@
                     <a class="btn btn-light @next" asp-page="./Department" asp-route-pageIndex="@(Model.PageIndex+1)">Sau</a>
                 </div>
             </div>
-            <div class="page-header"
-            
-            >
+            @if (User.IsInRole(RoleConstant.ADMIN))
+            {
+            <div class="page-header" style="margin-top:30px">
                 <div class="row">
                     <div class="col-md-8 col-sm-12">
                         <div class="title">
@@ -234,10 +234,6 @@
                         </div>
                         
                     </div>
-
-               
-
-               
                         <div class="col-md-4 col-sm-12 flex-right ">
                             @if (User.IsInRole(RoleConstant.ADMIN))
                             {
@@ -251,8 +247,6 @@
 
                                 </a>
                             }
-              
-
                         @if (User.IsInRole(RoleConstant.ADMIN))
                         {
                             <a class="btn btn-add" style="color:white;  margin-right: 15px" onclick="chooseFile()">
@@ -271,7 +265,7 @@
                         }
                         @if (User.IsInRole(RoleConstant.ADMIN))
                         {
-                            <a id="deleteButton" class="btn btn-add btn-danger disabled" style="color:white" asp-page="AddDepartment">
+                            <a id="deleteButton" class="btn btn-danger disabled" style="color:white">
                                 <div class="btn-container">
                                     <div>
                                         Xóa
@@ -282,11 +276,9 @@
                             </a>
                         }
                         </div>
-                   
-
-
                 </div>
-            </div>
+            </div>            
+            }
         </div>
     </div>
     
