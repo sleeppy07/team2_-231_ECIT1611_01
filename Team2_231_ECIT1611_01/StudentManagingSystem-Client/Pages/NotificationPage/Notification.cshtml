@@ -51,7 +51,15 @@
                                 <td class="table-plus">@item.Title</td>
                                 <td>@item.SubTitle</td>
                                 <td>@item.Content</td>
-                                <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
+                                @* <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td> *@
+                                @if (item.Status == true)
+                                {
+                                    <td class="status-active">Hoạt động</td>
+                                }
+                                else
+                                {
+                                    <td class="status-inactive">Không hoạt động</td>
+                                }
                                 <td>@item.Link</td>
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
                                 <td>@item.CreatedBy</td>

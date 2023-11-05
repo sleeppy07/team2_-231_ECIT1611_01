@@ -155,7 +155,15 @@
                                 <td>@item.Email</td>
                                 <td>@item.Adress</td>
                                 <td>@item.Phone</td>
-                                <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td>
+                                @* <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td> *@
+                                @if (item.Status == true)
+                                {
+                                    <td class="status-active">Hoạt động</td>
+                                }
+                                else
+                                {
+                                    <td class="status-inactive">Không hoạt động</td>
+                                }
                                 <td>@(item.CreatedDate != null ? item.CreatedDate.Value.ToShortDateString() : "")</td>
                                 <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
                                 <td>

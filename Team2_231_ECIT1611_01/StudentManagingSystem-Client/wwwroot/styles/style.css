@@ -37,7 +37,7 @@ body {
 	color: #031e23;
 	width: 100%;
 	height: 100%;
-	background: #ecf0f4;
+	/*background: #ecf0f4;*/
 }
 a {
 	outline: none;
@@ -858,6 +858,7 @@ textarea.form-control{
 	font-size: 15px;
 	border-bottom: 0;
 	padding-left: 1rem;
+	padding: 1.5rem;
 }
 .table td, .table th{
 	vertical-align: middle;
@@ -866,7 +867,17 @@ textarea.form-control{
 	font-size: 14px;
 	font-weight: 500;
 	padding: 1rem
+
 }
+
+.table td .status-active {
+	color: green !important;
+}
+
+.table td .status-active {
+	color: red !important;
+}
+
 .table-striped tbody tr:nth-of-type(odd){background: #eaeef2;}
 
 table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd{
