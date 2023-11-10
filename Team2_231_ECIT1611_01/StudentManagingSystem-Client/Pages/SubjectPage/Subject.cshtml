@@ -94,10 +94,13 @@
                                 <a class="btn btn-outline-success" onclick="chooseFile()">
                                     Nhập
                                 </a>
-                                <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportSubject" style="display: none;">
-                                    <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
-                                    <button id="submitBtn" type="submit">Xác nhận</button>
-                                </form>
+                                <div style=" display: none;">
+                                    <form id="uploadForm" method="post" enctype="multipart/form-data" asp-page="ImportSubject" >
+                                        <input id="fileInput" type="file" name="file" accept=".xlsx, .xls" />
+                                        <button id="submitBtn" type="submit">Xác nhận</button>
+                                    </form>
+                                </div>
+                                
                             </div>
                         </div>
 

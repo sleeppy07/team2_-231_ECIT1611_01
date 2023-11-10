@@ -129,14 +129,11 @@
         <div class="menu-block customscroll">
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
-                    @if (!User.IsInRole(RoleConstant.ADMIN))
-                    {
                         <li>
                             <a href="/Index" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
                             </a>
                         </li>
-                    }
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>
