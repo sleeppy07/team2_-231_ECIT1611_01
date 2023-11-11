@@ -20,13 +20,19 @@
                             </ol>
                         </nav>
                     </div>
-                    <div class="col-md-6 col-sm-12 text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-primary" asp-page="AddNotification">
-                                Thêm mới
-                            </a>
-                        </div>
+
+                    <div class="col-md-6 col-sm-12 mt-15 flex-right " style="direction: rtl">
+                        <a class="btn btn-primary btn-add" asp-page="AddNotification">
+                            <div class="btn-container">
+                                <div>
+                                    Thêm mới
+                                </div>
+                                <i class="fa fa-light fa-plus"></i>
+                            </div>
+                                       
+                        </a>
                     </div>
+
                 </div>
             </div>
             <div class="table-responsive" style="white-space:nowrap">
@@ -51,7 +57,6 @@
                                 <td class="table-plus">@item.Title</td>
                                 <td>@item.SubTitle</td>
                                 <td>@item.Content</td>
-                                @* <td>@(item.Status == true ? "Hoạt động" : "Không hoạt động")</td> *@
                                 @if (item.Status == true)
                                 {
                                     <td class="status-active">Hoạt động</td>
@@ -65,14 +70,9 @@
                                 <td>@item.CreatedBy</td>
                                 <td>@(item.LastModifiedDate != null ? item.LastModifiedDate.Value.ToShortDateString() : "")</td>
                                 <td>
-                                    <div class="dropdown">
-                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                                            <i class="dw dw-more"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" asp-page="UpdateNotification" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="dw dw-edit2"></i> Chi tiết</a>
-                                            <a class="dropdown-item" asp-page="DeleteNotification" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="dw dw-delete-3"></i> Xóa</a>
-                                        </div>
+                                    <div class="center">
+                                            <a class="dropdown-item p-0" style="max-width:25px; max-height: 25px" asp-page="UpdateNotification" asp-route-id="@item.Id" asp-route-pageIndex="@Model.PageIndex"><i class="fa fa-light fa-edit"></i></a>
+                                            <a class="dropdown-item p-0" style="max-width:25px; max-height: 25px" asp-page="DeleteNotification" asp-route-id="@item.Id" onclick="return confirmDelete(event)"><i class="fa fa-light fa-trash"></i></a>
                                     </div>
                                 </td>
                             </tr>

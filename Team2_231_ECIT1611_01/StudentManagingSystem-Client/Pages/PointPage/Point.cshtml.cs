@@ -81,15 +81,17 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                     {
                         page = 1,
                         pagesize = 5,
-                        teacherId = userid
+                        teacherId = null
                     };
 
                     var list = await client.PostSearch<PagedList<ClassRoomSearchResponse>>("/api/ClassRoom/search", requestModel);
                     ListClassRoom = (List<ClassRoomSearchResponse>)list.Data;
-                    ViewData["message"] = "Please select a class to view mark !";
+                    ViewData["message"] = null;
                     if (classId == null) ListPoint = new PagedList<PointResponse>();
                     else
                     {
+
+
                         Keyword = keyword;
                         if (pageIndex == 0) pageIndex = 1;
                         PageIndex = pageIndex;
