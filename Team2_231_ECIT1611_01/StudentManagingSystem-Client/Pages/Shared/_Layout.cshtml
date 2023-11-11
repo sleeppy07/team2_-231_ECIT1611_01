@@ -24,10 +24,12 @@
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="~/vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="~/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/vendors/fonts/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/src/plugins/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="~/src/plugins/sweetalert2/sweetalert2.css">
+
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -42,7 +44,7 @@
 <body>
     <div class="header">
         <div class="header-left">
-            <div class="menu-icon dw dw-menu"></div>
+            @* <div class="menu-icon dw dw-menu"></div> *@
             <div class="search-toggle-icon dw dw-search2" data-toggle="header_search"></div>
             <div class="header-search">
 
@@ -127,14 +129,11 @@
         <div class="menu-block customscroll">
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
-                    @if (!User.IsInRole(RoleConstant.ADMIN))
-                    {
                         <li>
                             <a href="/Index" class="dropdown-toggle no-arrow">
                                 <span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
                             </a>
                         </li>
-                    }
                     @if (User.IsInRole(RoleConstant.ADMIN))
                     {
                         <li>

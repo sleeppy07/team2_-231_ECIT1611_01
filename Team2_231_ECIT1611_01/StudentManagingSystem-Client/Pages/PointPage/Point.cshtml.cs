@@ -20,6 +20,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
         public List<ClassRoomSearchResponse> ListClassRoom { get; set; }
         [BindProperty]
         public string? Keyword { get; set; }
+        public bool? IsPassed { get; set; }
         [BindProperty]
         public int? Semester { get; set; }
         public int PageIndex { get; set; } = 1;
@@ -30,7 +31,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
         public string? StudentId { get; set; }
         [BindProperty]
         public string? ClassId { get; set; }
-        public async Task<IActionResult> OnGetAsync(int? semester, string? keyword, Guid? studentId, Guid? subjectId, Guid? classId, int pageIndex, int pagesize)
+        public async Task<IActionResult> OnGetAsync(int? semester, string? keyword, Guid? studentId, Guid? subjectId, Guid? classId, bool? isPassed, int pageIndex, int pagesize)
         {
             try
             {
@@ -45,6 +46,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                     ListStudent = new List<Student>();
                     Semester = semester;
                     Keyword = keyword;
+                    IsPassed = isPassed;
                     if (pageIndex == 0) pageIndex = 1;
                     PageIndex = pageIndex;
                     pagesize = 5;
@@ -59,6 +61,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                         pagesize = pagesize,
                         studentId = Guid.Parse(userid),
                         subjectId = subjectId,
+                        IsPassed = isPassed
                     };
 
                     ListPoint = await client.PostSearch<PagedList<PointResponse>>("/api/Point/search", requestModel);
@@ -78,15 +81,17 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                     {
                         page = 1,
                         pagesize = 5,
-                        teacherId = userid
+                        teacherId = null
                     };
 
                     var list = await client.PostSearch<PagedList<ClassRoomSearchResponse>>("/api/ClassRoom/search", requestModel);
                     ListClassRoom = (List<ClassRoomSearchResponse>)list.Data;
-                    ViewData["message"] = "Please select a class to view mark !";
-                    if(classId == null) ListPoint = new PagedList<PointResponse>();
+                    ViewData["message"] = null;
+                    if (classId == null) ListPoint = new PagedList<PointResponse>();
                     else
                     {
+
+
                         Keyword = keyword;
                         if (pageIndex == 0) pageIndex = 1;
                         PageIndex = pageIndex;
@@ -102,6 +107,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                             pagesize = pagesize,
                             classId = classId,
                             subjectId = subjectId,
+                            IsPassed = isPassed
                         };
 
                         ListPoint = await client.PostSearch<PagedList<PointResponse>>("/api/Point/search", requestModel2);
@@ -132,6 +138,7 @@ namespace StudentManagingSystem_Client.Pages.PointPage
                         pagesize = pagesize,
                         studentId = studentId,
                         subjectId = subjectId,
+                        IsPassed = isPassed
                     };
 
                     ListPoint = await client.PostSearch<PagedList<PointResponse>>("/api/Point/search", requestModel);

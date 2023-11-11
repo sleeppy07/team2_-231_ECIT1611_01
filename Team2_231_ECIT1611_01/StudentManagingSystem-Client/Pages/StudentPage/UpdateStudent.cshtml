@@ -84,14 +84,17 @@
                             <input asp-for="Student.DOB" class="form-control date-picker" type="text" placeholder="Ngày sinh">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Lớp học</label>
-                        <select asp-for="Student.ClassRoomId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
-                            @foreach (var item in Model.listClass)
-                            {
-                                <option value="@item.Id">@item.ClassName</option>
-                            }
-                        </select>
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Lớp học</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select asp-for="Student.ClassRoomId" class="custom-select2 form-control" style="width: 100%; height: 38px;">
+                                @foreach (var item in Model.listClass)
+                                {
+                                    <option value="@item.Id">@item.ClassName</option>
+                                }
+                            </select>
+                        </div>
+                        
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
