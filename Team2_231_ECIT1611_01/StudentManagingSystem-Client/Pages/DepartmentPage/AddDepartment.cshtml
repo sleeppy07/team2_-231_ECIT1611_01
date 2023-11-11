@@ -26,48 +26,59 @@
             <!-- Default Basic Forms Start -->
             <div class="pd-20 card-box mb-30">
                 <form method="post">
-                    <div class="form-group row">
-                        <label asp-for="DepartmentAddRequest.DepartmentName" class="col-sm-12 col-md-2 col-form-label">Tên khoa</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input asp-for="DepartmentAddRequest.DepartmentName" class="form-control" type="text" placeholder="Tên khoa">
+                    <div class="row col-sm-12 col-md-12" style="width:100%; margin: 0">
+                        <div class="form-group col-sm-4">
+                            <label asp-for="DepartmentAddRequest.DepartmentName" class="col-sm-12 col-md-12 col-form-label">Tên khoa</label>
+                            <div class="col-sm-12 col-md-12">
+                                <input asp-for="DepartmentAddRequest.DepartmentName" class="form-control" type="text" placeholder="Tên khoa">
+                            </div>
                         </div>
-                    </div>
-                    @if (ViewData["messageCode"] != null)
-                    {
-                        <div class="form-group row">
-                            <label asp-for="DepartmentAddRequest.DepartmentCode" class="col-sm-12 col-md-2 col-form-label">Mã khoa</label>
-                            <div class="col-sm-12 col-md-10">
-                                <input asp-for="DepartmentAddRequest.DepartmentCode" class="form-control form-control-danger" type="text" placeholder="Mã khoa" required="required">
-                                <span asp-validation-for="DepartmentAddRequest.DepartmentCode" class="text-danger"></span>
-                                <div style="margin-top: 10px;font-style: italic" ; class="form-control-feedback text-danger">
-                                    @ViewData["messageCode"]
+                        @if (ViewData["messageCode"] != null)
+                        {
+                            <div class="form-group col-sm-4">
+                                <label asp-for="DepartmentAddRequest.DepartmentCode" class="col-sm-12 col-md-12 col-form-label">Mã khoa</label>
+                                <div class="col-sm-12 col-md-12">
+                                    <input asp-for="DepartmentAddRequest.DepartmentCode" class="form-control form-control-danger" type="text" placeholder="Mã khoa" required="required">
+                                    <span asp-validation-for="DepartmentAddRequest.DepartmentCode" class="text-danger"></span>
+                                    <div style="margin-top: 10px;font-style: italic" ; class="form-control-feedback text-danger">
+                                        @ViewData["messageCode"]
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="form-group row">
-                            <label asp-for="DepartmentAddRequest.DepartmentCode" class="col-sm-12 col-md-2 col-form-label">Mã khoa</label>
-                            <div class="col-sm-12 col-md-10">
-                                <input asp-for="DepartmentAddRequest.DepartmentCode" class="form-control" type="text" placeholder="Mã khoa" required="required">
-                                <span asp-validation-for="DepartmentAddRequest.DepartmentCode" class="text-danger"></span>
+                        }
+                        else
+                        {
+                            <div class="form-group col-sm-4">
+                                <label asp-for="DepartmentAddRequest.DepartmentCode" class="col-sm-12 col-md-12 col-form-label">Mã khoa</label>
+                                <div class="col-sm-12 col-md-12">
+                                    <input asp-for="DepartmentAddRequest.DepartmentCode" class="form-control" type="text" placeholder="Mã khoa" required="required">
+                                    <span asp-validation-for="DepartmentAddRequest.DepartmentCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                        }
+                        <div class="form-group col-sm-4">
+                            <label asp-for="DepartmentAddRequest.Status" class="col-sm-12 col-md-12 col-form-label">Trạng thái</label>
+                            <div class="col-sm-12 col-md-12">
+                                <select asp-for="DepartmentAddRequest.Status" class="custom-select col-12">
+                                    <option style="color: green; font-weight:bold" value="true">Hoạt động</option>
+                                    <option style="color: red; font-weight:bold" value="false">Không hoạt động</option>
+                                </select>
                             </div>
                         </div>
-                    }
-                    <div class="form-group row">
-                        <label asp-for="DepartmentAddRequest.Status" class="col-sm-12 col-md-2 col-form-label">Trạng thái</label>
-                        <div class="col-sm-12 col-md-10">
-                            <select asp-for="DepartmentAddRequest.Status" class="custom-select col-12">
-                                <option value="true">Hoạt động</option>
-                                <option value="false">Không hoạt động</option>
-                            </select>
+                        <div class="form-group col-sm-12">
+                            <label asp-for="DepartmentAddRequest.Status" class="col-sm-12 col-md-12 col-form-label">Mô tả</label>
+                            <div class=" col-sm-12 col-md-12">
+                                <textarea class="swal2-textarea" rows="4" cols="50" style="margin: 0;width:100%"></textarea>
+                            </div>
+                        </div>
+                        <div 
+                            style="display:flex; justify-content: flex-end"
+                             class="btn-list col-sm-12 col-md-12">
+                            <a asp-page="Department" type="submit" class="btn" style="min-width:150px;background: #CAC4D0; color: white">Hủy</a>
+                            <button type="submit" class="btn btn-primary" style="min-width:150px;">Lưu</button>
                         </div>
                     </div>
-                    <div class="btn-list">
-                        <button type="submit" class="btn btn-primary">Lưu</button>
-                        <a asp-page="Department" type="submit" class="btn btn-danger">Thoát</a>
-                    </div>
+                    
                 </form>
             </div>
             <!-- Default Basic Forms End -->
