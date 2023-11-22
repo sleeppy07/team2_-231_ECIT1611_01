@@ -91,10 +91,10 @@ namespace DataAccess.Repository
             var query = _context.Points.AsQueryable();
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(c => !string.IsNullOrEmpty(c.Subject.SubjectName) && c.Subject.SubjectName.Contains(keyword.ToLower().Trim())
-                                      || !string.IsNullOrEmpty(c.Subject.SubjectCode) && c.Subject.SubjectCode.Contains(keyword.ToLower().Trim())
-                                      || !string.IsNullOrEmpty(c.Student.StudentName) && c.Student.StudentName.Contains(keyword.ToLower().Trim())
-                                      || !string.IsNullOrEmpty(c.Student.StudentCode) && c.Student.StudentCode.Contains(keyword.ToLower().Trim()));
+                query = query.Where(c => !string.IsNullOrEmpty(c.Subject.SubjectName) && c.Subject.SubjectName.ToLower().Contains(keyword.ToLower().Trim())
+                                      || !string.IsNullOrEmpty(c.Subject.SubjectCode) && c.Subject.SubjectCode.ToLower().Contains(keyword.ToLower().Trim())
+                                      || !string.IsNullOrEmpty(c.Student.StudentName) && c.Student.StudentName.ToLower().Contains(keyword.ToLower().Trim())
+                                      || !string.IsNullOrEmpty(c.Student.StudentCode) && c.Student.StudentCode.ToLower().Contains(keyword.ToLower().Trim()));
             }
             if (subId != null)
             {

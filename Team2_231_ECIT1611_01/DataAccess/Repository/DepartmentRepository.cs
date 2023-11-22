@@ -105,8 +105,8 @@ namespace DataAccess.Repository
             var query = _context.Departments.AsQueryable();
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(c => (!string.IsNullOrEmpty(c.DepartmentName) && c.DepartmentName.Contains(keyword.ToLower().Trim()))
-                                      || (!string.IsNullOrEmpty(c.DepartmentCode) && c.DepartmentCode.Contains(keyword.ToLower().Trim())));
+                query = query.Where(c => (!string.IsNullOrEmpty(c.DepartmentName.ToLower()) && c.DepartmentName.ToLower().Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.DepartmentCode.ToLower()) && c.DepartmentCode.ToLower().Contains(keyword.ToLower().Trim())));
             }
             if (status != null)
             {

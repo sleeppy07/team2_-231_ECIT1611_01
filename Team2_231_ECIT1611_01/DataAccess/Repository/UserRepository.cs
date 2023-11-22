@@ -84,8 +84,8 @@ namespace DataAccess.Repository
             var res = await query.ToListAsync();
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(c => (!string.IsNullOrEmpty(c.FullName) && c.FullName.Contains(keyword.ToLower().Trim()))
-                                      || (!string.IsNullOrEmpty(c.Email) && c.Email.Contains(keyword.ToLower().Trim())));
+                query = query.Where(c => (!string.IsNullOrEmpty(c.FullName) && c.FullName.ToLower().Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.Email) && c.Email.ToLower().Contains(keyword.ToLower().Trim())));
             }
             if (status != null)
             {

@@ -81,8 +81,8 @@ namespace DataAccess.Repository
             var query = _context.ClassRooms.AsQueryable();
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(c => (!string.IsNullOrEmpty(c.ClassName) && c.ClassName.Contains(keyword.ToLower().Trim()))
-                                      || (!string.IsNullOrEmpty(c.ClassCode) && c.ClassCode.Contains(keyword.ToLower().Trim())));
+                query = query.Where(c => (!string.IsNullOrEmpty(c.ClassName) && c.ClassName.ToLower().Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.ClassCode) && c.ClassCode.ToLower().Contains(keyword.ToLower().Trim())));
             }
             if (status != null)
             {

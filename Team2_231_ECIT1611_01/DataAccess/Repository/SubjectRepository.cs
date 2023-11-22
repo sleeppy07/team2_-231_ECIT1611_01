@@ -106,8 +106,8 @@ namespace DataAccess.Repository
 
             if (!string.IsNullOrEmpty(keyword))
             {
-                query = query.Where(c => (!string.IsNullOrEmpty(c.SubjectName) && c.SubjectName.Contains(keyword.ToLower().Trim()))
-                                      || (!string.IsNullOrEmpty(c.SubjectCode) && c.SubjectCode.Contains(keyword.ToLower().Trim())));
+                query = query.Where(c => (!string.IsNullOrEmpty(c.SubjectName) && c.SubjectName.ToLower().Contains(keyword.ToLower().Trim()))
+                                      || (!string.IsNullOrEmpty(c.SubjectCode) && c.SubjectCode.ToLower().Contains(keyword.ToLower().Trim())));
             }
             if (status != null)
             {
